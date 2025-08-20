@@ -158,8 +158,3 @@ Note: Some placeholders may be async/cached for performance.
 
 ---
 
-## Lisans / License
-Bu proje kapalı kaynak bir örnektir; dağıtım koşulları proje sahibine aittir. Aksi belirtilmedikçe tüm hakları saklıdır.
-
-This project is a closed-source example; distribution terms belong to the owner. All rights reserved unless stated otherwise.
-
