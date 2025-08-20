@@ -1,4 +1,3 @@
-# Combat-Master
 # Combat Master
 
 Gelişmiş combo sayacı, ses efektleri, miss (ıskalama) algılama, renk sistemi, veritabanı ve liderlik tablosu özelliklerine sahip bir Minecraft (Spigot/Paper) eklentisi.
