@@ -1,0 +1,27 @@
+name: Combat-Master
+version: 1.0.0
+main: com.melut.combatmaster.CombatMaster
+api-version: 1.20
+author: Melut
+description: Advanced combat hit counter plugin with sounds and leaderboard
+depend: [PlaceholderAPI]
+
+commands:
+  combatmaster:
+    description: Combat Master main command
+    usage: /<command> [reload|leaderboard|stats]
+    aliases: [cm, combat]
+    permission: combatmaster.admin
+  leaderboard:
+    description: Shows combat hit leaderboard
+    usage: /<command>
+    aliases: [lb, top]
+    permission: combatmaster.use
+
+permissions:
+  combatmaster.admin:
+    description: Admin permissions
+    default: op
+  combatmaster.use:
+    description: Basic usage permissions
+    default: true
