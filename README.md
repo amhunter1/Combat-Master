@@ -2,6 +2,8 @@
 
 Gelişmiş combo sayacı, ses efektleri, miss (ıskalama) algılama, renk sistemi, veritabanı ve liderlik tablosu özelliklerine sahip bir Minecraft (Spigot/Paper) eklentisi.
 
+[Download/indirme link](https://modrinth.com/plugin/combat-master)
+
 A powerful Minecraft (Spigot/Paper) combat plugin with advanced combo counter, sounds, miss detection, color system, database and leaderboard.
 
 ---
