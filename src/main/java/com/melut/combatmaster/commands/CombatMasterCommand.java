@@ -1,6 +1,8 @@
 package com.melut.combatmaster.commands;
 
 import com.melut.combatmaster.CombatMaster;
+import com.melut.combatmaster.gui.menus.MainMenu;
+import com.melut.combatmaster.gui.menus.StatsMenu;
 import com.melut.combatmaster.managers.ConfigManager;
 import com.melut.combatmaster.managers.CombatManager;
 import com.melut.combatmaster.database.DatabaseManager;
@@ -29,11 +31,30 @@ public class CombatMasterCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
-            showHelp(sender);
-            return true;
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                plugin.getMenuManager().openMenu(player, new MainMenu(plugin, player));
+                return true;
+            } else {
+                showHelp(sender);
+                return true;
+            }
         }
 
         switch (args[0].toLowerCase()) {
+            case "gui":
+            case "menu":
+                if (!(sender instanceof Player)) {
+                    sender.sendMessage(plugin.getLangManager().getMessage("commands.player_only", "&cBu komut sadece oyuncular tarafından kullanılabilir!"));
+                    return true;
+                }
+                if (!sender.hasPermission("combatmaster.use")) {
+                    noPerm(sender);
+                    return true;
+                }
+                Player player = (Player) sender;
+                plugin.getMenuManager().openMenu(player, new MainMenu(plugin, player));
+                break;
             case "reload":
                 if (!sender.hasPermission("combatmaster.admin")) {
                     noPerm(sender);
@@ -84,21 +105,21 @@ public class CombatMasterCommand implements CommandExecutor, TabCompleter {
     }
 
     private void showHelp(CommandSender sender) {
-        sender.sendMessage(ChatColor.GOLD + "=== Combat-Master Komutları ===");
-        sender.sendMessage(ChatColor.YELLOW + "/combatmaster stats [oyuncu]" + ChatColor.WHITE + " - Oyuncu istatistiklerini göster");
-        sender.sendMessage(ChatColor.YELLOW + "/combatmaster top" + ChatColor.WHITE + " - Sıralamayı göster");
-        sender.sendMessage(ChatColor.YELLOW + "/combatmaster reload" + ChatColor.WHITE + " - Plugini yeniden yükle (admin)");
-        sender.sendMessage(ChatColor.YELLOW + "/combatmaster reset [oyuncu]" + ChatColor.WHITE + " - Oyuncu combo'sunu sıfırla (admin)");
-        sender.sendMessage(ChatColor.YELLOW + "/combatmaster info" + ChatColor.WHITE + " - Plugin bilgileri (admin)");
+        sender.sendMessage(plugin.getLangManager().getMessage("commands.help_header"));
+        sender.sendMessage(plugin.getLangManager().getMessage("commands.gui_usage"));
+        sender.sendMessage(plugin.getLangManager().getMessage("commands.stats_usage"));
+        sender.sendMessage(plugin.getLangManager().getMessage("commands.top_usage"));
+        sender.sendMessage(plugin.getLangManager().getMessage("commands.reload_usage"));
+        sender.sendMessage(plugin.getLangManager().getMessage("commands.reset_usage"));
+        sender.sendMessage(plugin.getLangManager().getMessage("commands.info_usage"));
     }
 
     private void handleReload(CommandSender sender) {
         try {
             plugin.reloadPlugin();
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    plugin.getConfig().getString("messages.plugin-reloaded", "&aPlugin başarıyla yeniden yüklendi!")));
+            sender.sendMessage(plugin.getLangManager().getMessage("commands.plugin_reloaded"));
         } catch (Exception e) {
-            sender.sendMessage(ChatColor.RED + "Plugin yeniden yüklenirken hata oluştu: " + e.getMessage());
+            sender.sendMessage(plugin.getLangManager().getMessage("system.config_error", "&cPlugin yeniden yüklenirken hata oluştu: " + e.getMessage()));
             plugin.getLogger().severe("Reload hatası: " + e.getMessage());
         }
     }
@@ -106,62 +127,67 @@ public class CombatMasterCommand implements CommandExecutor, TabCompleter {
     private void handleStats(CommandSender sender, String[] args) {
         if (args.length < 2) {
             if (sender instanceof Player) {
-                showPlayerStats(sender, (Player) sender);
+                Player player = (Player) sender;
+                plugin.getMenuManager().openMenu(player, new StatsMenu(plugin, player));
             } else {
-                sender.sendMessage(ChatColor.RED + "Konsol için oyuncu adı belirtmelisiniz!");
+                sender.sendMessage(plugin.getLangManager().getMessage("commands.console_specify_player", "&cKonsol için oyuncu adı belirtmelisiniz!"));
             }
             return;
         }
 
         Player target = plugin.getServer().getPlayer(args[1]);
         if (target == null) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    plugin.getConfig().getString("messages.player-not-found", "&cOyuncu bulunamadı!")));
+            sender.sendMessage(plugin.getLangManager().getMessage("commands.player_not_found"));
             return;
         }
 
-        showPlayerStats(sender, target);
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            plugin.getMenuManager().openMenu(player, new StatsMenu(plugin, target));
+        } else {
+            showPlayerStats(sender, target);
+        }
     }
 
     private void showPlayerStats(CommandSender sender, Player target) {
         CombatManager.CombatData combatData = plugin.getCombatManager().getPlayerData(target.getUniqueId());
 
-        sender.sendMessage(ChatColor.GOLD + "=== " + target.getName() + " Combat İstatistikleri ===");
+        sender.sendMessage(plugin.getLangManager().getMessage("gui.titles.stats", target.getName()));
 
         if (combatData != null) {
-            sender.sendMessage(ChatColor.YELLOW + "Mevcut Combo: " + ChatColor.WHITE + combatData.getCurrentCombo());
-            sender.sendMessage(ChatColor.YELLOW + "En İyi Combo: " + ChatColor.WHITE + combatData.getBestCombo());
-            sender.sendMessage(ChatColor.YELLOW + "Toplam Hit: " + ChatColor.WHITE + combatData.getTotalHits());
+            sender.sendMessage(plugin.getLangManager().getMessage("gui.items.current_combo") + ": " + combatData.getCurrentCombo());
+            sender.sendMessage(plugin.getLangManager().getMessage("gui.items.best_combo") + ": " + combatData.getBestCombo());
+            sender.sendMessage(plugin.getLangManager().getMessage("gui.items.total_hits") + ": " + combatData.getTotalHits());
         } else {
-            sender.sendMessage(ChatColor.GRAY + "Bu oyuncunun henüz combat verisi bulunmuyor.");
+            sender.sendMessage(plugin.getLangManager().getMessage("commands.no_combat_data", "&7Bu oyuncunun henüz combat verisi bulunmuyor."));
         }
     }
 
     private void handleReset(CommandSender sender, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(ChatColor.RED + "Kullanım: /combatmaster reset <oyuncu>");
+            sender.sendMessage(plugin.getLangManager().getMessage("commands.reset_usage"));
             return;
         }
 
         Player target = plugin.getServer().getPlayer(args[1]);
         if (target == null) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    plugin.getConfig().getString("messages.player-not-found", "&cOyuncu bulunamadı!")));
+            sender.sendMessage(plugin.getLangManager().getMessage("commands.player_not_found"));
             return;
         }
 
         plugin.getCombatManager().resetCombo(target);
-        sender.sendMessage(ChatColor.GREEN + target.getName() + " oyuncusunun combo'su sıfırlandı.");
-        target.sendMessage(ChatColor.YELLOW + "Combat combo'nuz bir yönetici tarafından sıfırlandı.");
+        sender.sendMessage(plugin.getLangManager().getMessage("commands.combo_reset", target.getName() + " oyuncusunun combo'su sıfırlandı."));
+        target.sendMessage(plugin.getLangManager().getMessage("commands.combo_reset_notify", "Combat combo'nuz bir yönetici tarafından sıfırlandı."));
     }
 
     private void handleInfo(CommandSender sender) {
-        sender.sendMessage(ChatColor.GOLD + "=== Combat-Master ===");
-        sender.sendMessage(ChatColor.YELLOW + "Versiyon: " + ChatColor.WHITE + plugin.getDescription().getVersion());
-        sender.sendMessage(ChatColor.YELLOW + "Geliştirici: " + ChatColor.WHITE + "Melut");
-        sender.sendMessage(ChatColor.YELLOW + "Aktif Dünyalar: " + ChatColor.WHITE +
+        sender.sendMessage(plugin.getLangManager().getGUITitle("main"));
+        sender.sendMessage("&eVersiyon: &f" + plugin.getDescription().getVersion());
+        sender.sendMessage("&eGeliştirici: &fMelut");
+        sender.sendMessage("&eDil: &f" + plugin.getLangManager().getCurrentLanguage());
+        sender.sendMessage("&eAktif Dünyalar: &f" +
                 (configManager.getEnabledWorlds().isEmpty() ? "Tümü" : String.join(", ", configManager.getEnabledWorlds())));
-        sender.sendMessage(ChatColor.YELLOW + "Combo Timeout: " + ChatColor.WHITE + configManager.getComboTimeout() + " saniye");
+        sender.sendMessage(plugin.getLangManager().getMessage("combat_info.timeout", configManager.getComboTimeout()));
     }
 
     private void handleTop(CommandSender sender) {
@@ -197,8 +223,7 @@ public class CombatMasterCommand implements CommandExecutor, TabCompleter {
     }
 
     private void noPerm(CommandSender sender) {
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                plugin.getConfig().getString("messages.no-permission", "&cBu komutu kullanma yetkiniz yok!")));
+        sender.sendMessage(plugin.getLangManager().getMessage("commands.no_permission"));
     }
 
     @Override
@@ -206,7 +231,7 @@ public class CombatMasterCommand implements CommandExecutor, TabCompleter {
         List<String> completions = new ArrayList<>();
 
         if (args.length == 1) {
-            List<String> commands = Arrays.asList("stats", "top", "reload", "reset", "info");
+            List<String> commands = Arrays.asList("gui", "menu", "stats", "top", "reload", "reset", "info");
             for (String cmd : commands) {
                 if (cmd.toLowerCase().startsWith(args[0].toLowerCase())) {
                     completions.add(cmd);
