@@ -8,7 +8,7 @@ softdepend: [PlaceholderAPI]
 
 commands:
   combatmaster:
-    description: Combat Master ana komutu. Oyuncular: /combatmaster stats, /combatmaster top
+    description: Combat Master ana komutu. Oyuncular /combatmaster stats, /combatmaster top
     usage: /<command> [reload|stats|reset|info|top]
     aliases: [cm, combat]
     permission: combatmaster.use

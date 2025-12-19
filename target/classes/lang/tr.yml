@@ -1,0 +1,171 @@
+# Combat Master - Türkçe Dil Dosyası
+# Bu dosyayı düzenleyerek pluginin dilini özelleştirebilirsiniz
+
+# GUI Başlıkları
+gui:
+  titles:
+    main: "&6&l⚔ Combat Master Hub ⚔"
+    stats: "&e⚡ {} İstatistikleri"
+    leaderboard: "&6🏆 Combat Sıralaması"
+    admin: "&c⚡ Admin Panel"
+    settings: "&d⚙️ Combat Ayarları"
+  
+  # Leaderboard Messages
+  leaderboard:
+    no_data: "&cHenüz veri yok"
+    
+  # Settings Menu
+  settings:
+    sound_settings: "&e🔊 Ses Ayarları"
+    visual_settings: "&d👁️ Görsel Ayarlar"
+    combat_settings: "&c⚔️ Combat Ayarları"
+    world_settings: "&2🌍 Dünya Ayarları"
+    language_settings: "&6🌐 Dil Ayarları"
+    database_settings: "&9💾 Database Ayarları"
+    performance_info: "&c⚡ Performans Bilgileri"
+    plugin_info: "&b ℹ️ Plugin Bilgileri"
+    page_info: "&e📄 Sayfa Bilgisi"
+    your_rank: "&e🎯 Sizin Sıralamanız"
+    not_ranked: "&7🎯 Sıralama Dışı"
+    settings_updated: "&a✓ Ayarlar menüsü güncellendi!"
+    
+  # GUI Item İsimleri
+  items:
+    stats: "&e⚡ İstatistiklerim"
+    leaderboard: "&6🏆 Sıralama"
+    settings: "&d⚙️ Ayarlar"
+    admin: "&c⚡ Admin Panel"
+    help: "&b📖 Yardım"
+    close: "&c✖ Kapat"
+    back: "&c« Geri"
+    refresh: "&aYenile"
+    next_page: "&e▶ Sonraki Sayfa"
+    prev_page: "&e◀ Önceki Sayfa"
+    
+    # Stats Menu Items
+    current_combo: "&6⚔️ Mevcut Combo"
+    best_combo: "&6🏆 En İyi Combo"
+    total_hits: "&b💎 Toplam Hit"
+    rank: "&e📈 Sıralamadaki Yeriniz"
+    combat_info: "&d⏰ Combat Bilgileri"
+    progress: "&a📊 İlerleme Durumu"
+    
+  # GUI Lore Metinleri
+  lore:
+    stats_desc: "&7Combat performansını görüntüle"
+    leaderboard_desc: "&7Combat liderleri tablosunu gör"
+    settings_desc: "&7Kişisel combat ayarlarını değiştir"
+    admin_desc: "&7Yönetici kontrol paneli"
+    help_desc: "&7Combat Master nasıl kullanılır?"
+    close_desc: "&7Menüyü kapat"
+    back_desc: "&7Ana menüye geri dön"
+    refresh_desc: "&7Sayfayı yenile"
+    
+    # Stats Descriptions
+    current_combo_desc: "&7Şu anki combo seviyeniz"
+    best_combo_desc: "&7Şimdiye kadarki en yüksek combo"
+    total_hits_desc: "&7Toplam başarılı vuruş sayısı"
+    rank_desc: "&7Combat liderlik tablosundaki pozisyonunuz"
+    combat_info_desc: "&7Combat sistemi hakkında bilgiler"
+    progress_desc: "&7Bir sonraki seviye için ilerlemeniz"
+    
+    # Stats Values
+    current_combo_value: "&e{}"
+    best_combo_value: "&6{}"
+    total_hits_value: "&b{}"
+    level: "&fSeviye: {}"
+    rank_value: "&a#{}"
+    no_rank: "&7Henüz sıralamada değilsiniz"
+    
+    # Feature Status
+    active_combo: "&aAktif combo devam ediyor!"
+    no_combo: "&7Henüz combo başlatılmadı"
+    sounds_on: "&aAktif"
+    sounds_off: "&cKapalı"
+
+# Komutlar
+commands:
+  no_permission: "&cBu komutu kullanma yetkiniz yok!"
+  plugin_reloaded: "&aPlugin başarıyla yeniden yüklendi!"
+  player_not_found: "&cOyuncu bulunamadı!"
+  world_disabled: "&cBu dünyada combat sistemi aktif değil!"
+  help_header: "&6=== Combat-Master Komutları ==="
+  stats_usage: "&e/combatmaster stats [oyuncu] &f- Oyuncu istatistiklerini göster"
+  top_usage: "&e/combatmaster top &f- Sıralamayı göster"
+  reload_usage: "&e/combatmaster reload &f- Plugini yeniden yükle (admin)"
+  reset_usage: "&e/combatmaster reset [oyuncu] &f- Oyuncu combo'sunu sıfırla (admin)"
+  info_usage: "&e/combatmaster info &f- Plugin bilgileri (admin)"
+  gui_usage: "&e/combatmaster gui &f- Ana menüyü aç"
+  
+# Sistem Mesajları
+system:
+  plugin_enabled: "&aCombat-Master plugin başarıyla yüklendi!"
+  plugin_disabled: "&cCombat-Master plugin kapatılıyor..."
+  database_error: "&cDatabase başlatılırken hata oluştu!"
+  config_reloaded: "&aKonfigürasyon dosyaları yeniden yüklendi!"
+  menu_error: "&cMenü işleminde hata oluştu!"
+  stats_updated: "&a✓ İstatistikler güncellendi!"
+  
+# Combat Seviyeleri
+levels:
+  title: "&6✨ Combat Seviyeniz"
+  beginner: "&7Başlangıç"
+  experienced: "&f⭐ Deneyimli"
+  master: "&e⭐⭐ Usta"
+  expert: "&6⭐⭐⭐ Uzman"
+  legendary: "&c⭐⭐⭐⭐ Efsane"
+  epic: "&d⭐⭐⭐⭐⭐ Destansı"
+  godlike: "&b✦ Tanrısal"
+
+# Rank Ünvanları
+ranks:
+  title: "&e🏆 Combat Ünvanınız"
+  champion: "&6👑 Şampiyon"
+  second: "&7🥈 İkinci"
+  third: "&c🥉 Üçüncü"
+  top10: "&e⭐ Top 10"
+  top25: "&f🌟 Top 25"
+  top50: "&7✨ Top 50"
+  ranked: "&8💫 Sıralamada"
+
+# Combo Açıklamaları
+combo_descriptions:
+  none: "İlk combo'nuzu yapmaya hazırlanın!"
+  beginner: "Güzel başlangıç! Devam edin."
+  good: "İyi gidiyorsunuz! Ritim tutun."
+  impressive: "Etkileyici performans! Harika."
+  outstanding: "Olağanüstü yetenek! Muhteşem."
+  legendary: "Efsanevi seviye! İnanılmaz."
+  epic: "Destansı başarı! Görülmemiş."
+  godlike: "Tanrısal güç! Sınırları aştınız!"
+
+# Yardım Mesajları
+help:
+  combo_system: "&e• &fCombo sistemi ile combat becerilerinizi geliştirin!"
+  hit_system: "&e• &fHer başarılı vuruş combo puanınızı artırır"
+  sound_effects: "&e• &fCombo puanına göre farklı sesler ve efektler"
+  leaderboard: "&e• &fLeaderboard'da diğer oyuncularla yarışın"
+  titles: "&e• &fCombo seviyelerinize göre özel ünvanlar kazanın"
+  commands: "&a• &7Komutlar: &f/combatmaster help"
+  discord: "&a• &7Discord: &fhttps://discord.com/users/871721944268038175"
+  github: "&a• &7GitHub: &fhttps://github.com/amhunter1"
+
+# Combat Bilgileri
+combat_info:
+  timeout: "&f▸ Combo Timeout: &e{} saniye"
+  sounds: "&f▸ Ses Efektleri: {}"
+  actionbar: "&f▸ Action Bar: {}"
+  mob_hits: "&f▸ Mob Vuruşları: {}"
+  server_settings: "&7Bu bilgiler sunucu ayarlarına bağlıdır"
+
+# Genel
+general:
+  continue: "&aDevam edin, başarabilirsiniz!"
+  loading: "&eYükleniyor..."
+  error: "&cHata oluştu!"
+  success: "&aBaşarılı!"
+  click_for_details: "&aDetaylar için tıkla!"
+  click_for_leaderboard: "&eLeaderboard için tıkla!"
+  click_for_settings: "&dAyarlar için tıkla!"
+  click_for_admin: "&cYönetici paneli için tıkla!"
+  click_for_help: "&bBilgi için tıkla!"

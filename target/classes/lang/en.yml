@@ -1,0 +1,174 @@
+# Combat Master - English Language File
+# You can customize the plugin language by editing this file
+
+# GUI Titles
+gui:
+  titles:
+    main: "&6&l⚔ Combat Master Hub ⚔"
+    stats: "&e⚡ {} Statistics"
+    leaderboard: "&6🏆 Combat Leaderboard"
+    admin: "&c⚡ Admin Panel"
+    settings: "&d⚙️ Combat Settings"
+  
+  # Leaderboard Messages
+  leaderboard:
+    no_data: "&cNo data available yet"
+    
+  # Settings Menu
+  settings:
+    sound_settings: "&e🔊 Sound Settings"
+    visual_settings: "&d👁️ Visual Settings"
+    combat_settings: "&c⚔️ Combat Settings"
+    world_settings: "&2🌍 World Settings"
+    language_settings: "&6🌐 Language Settings"
+    database_settings: "&9💾 Database Settings"
+    performance_info: "&c⚡ Performance Information"
+    plugin_info: "&b ℹ️ Plugin Information"
+    page_info: "&e📄 Page Information"
+    your_rank: "&e🎯 Your Rank"
+    not_ranked: "&7🎯 Not Ranked"
+    settings_updated: "&a✓ Settings menu updated!"
+    
+  # GUI Item Names
+  items:
+    stats: "&e⚡ My Statistics"
+    leaderboard: "&6🏆 Leaderboard"
+    settings: "&d⚙️ Settings"
+    admin: "&c⚡ Admin Panel"
+    help: "&b📖 Help"
+    close: "&c✖ Close"
+    back: "&c« Back"
+    refresh: "&aRefresh"
+    next_page: "&e▶ Next Page"
+    prev_page: "&e◀ Previous Page"
+    
+    # Stats Menu Items
+    current_combo: "&6⚔️ Current Combo"
+    best_combo: "&6🏆 Best Combo"
+    total_hits: "&b💎 Total Hits"
+    rank: "&e📈 Your Rank"
+    combat_info: "&d⏰ Combat Information"
+    progress: "&a📊 Progress Status"
+    
+  # GUI Lore Texts
+  lore:
+    stats_desc: "&7View your combat performance"
+    leaderboard_desc: "&7See the combat leaders table"
+    settings_desc: "&7Change personal combat settings"
+    admin_desc: "&7Administrator control panel"
+    help_desc: "&7How to use Combat Master?"
+    close_desc: "&7Close the menu"
+    back_desc: "&7Return to main menu"
+    refresh_desc: "&7Refresh the page"
+    
+    # Stats Descriptions
+    current_combo_desc: "&7Your current combo level"
+    best_combo_desc: "&7Your highest combo so far"
+    total_hits_desc: "&7Total successful hit count"
+    rank_desc: "&7Your position in combat leaderboard"
+    combat_info_desc: "&7Information about combat system"
+    progress_desc: "&7Your progress to next level"
+    
+    # Stats Values
+    current_combo_value: "&e{}"
+    best_combo_value: "&6{}"
+    total_hits_value: "&b{}"
+    level: "&fLevel: {}"
+    rank_value: "&a#{}"
+    no_rank: "&7You are not in ranking yet"
+    
+    # Feature Status
+    active_combo: "&aActive combo in progress!"
+    no_combo: "&7No combo started yet"
+    sounds_on: "&aActive"
+    sounds_off: "&cDisabled"
+
+# Commands
+commands:
+  no_permission: "&cYou don't have permission to use this command!"
+  plugin_reloaded: "&aPlugin successfully reloaded!"
+  player_not_found: "&cPlayer not found!"
+  world_disabled: "&cCombat system is not active in this world!"
+  help_header: "&6=== Combat-Master Commands ==="
+  stats_usage: "&e/combatmaster stats [player] &f- Show player statistics"
+  top_usage: "&e/combatmaster top &f- Show leaderboard"
+  reload_usage: "&e/combatmaster reload &f- Reload plugin (admin)"
+  reset_usage: "&e/combatmaster reset [player] &f- Reset player combo (admin)"
+  info_usage: "&e/combatmaster info &f- Plugin information (admin)"
+  gui_usage: "&e/combatmaster gui &f- Open main menu"
+  
+# System Messages
+system:
+  plugin_enabled: "&aCombat-Master plugin successfully loaded!"
+  plugin_disabled: "&cCombat-Master plugin shutting down..."
+  database_error: "&cError occurred while starting database!"
+  config_reloaded: "&aConfiguration files reloaded!"
+  menu_error: "&cError occurred in menu operation!"
+  stats_updated: "&a✓ Statistics updated!"
+  
+# Combat Levels
+levels:
+  title: "&6✨ Your Combat Level"
+  beginner: "&7Beginner"
+  experienced: "&f⭐ Experienced"
+  master: "&e⭐⭐ Master"
+  expert: "&6⭐⭐⭐ Expert"
+  legendary: "&c⭐⭐⭐⭐ Legendary"
+  epic: "&d⭐⭐⭐⭐⭐ Epic"
+  godlike: "&b✦ Godlike"
+
+# Rank Titles
+ranks:
+  title: "&e🏆 Your Combat Rank"
+  champion: "&6👑 Champion"
+  second: "&7🥈 Second"
+  third: "&c🥉 Third"
+  top10: "&e⭐ Top 10"
+  top25: "&f🌟 Top 25"
+  top50: "&7✨ Top 50"
+  ranked: "&8💫 Ranked"
+
+# Combo Descriptions
+combo_descriptions:
+  none: "Get ready to make your first combo!"
+  beginner: "Nice start! Keep going."
+  good: "You're doing well! Keep the rhythm."
+  impressive: "Impressive performance! Great."
+  outstanding: "Outstanding skill! Magnificent."
+  legendary: "Legendary level! Incredible."
+  epic: "Epic achievement! Unprecedented."
+  godlike: "Divine power! You've exceeded limits!"
+
+# Help Messages
+help:
+  combo_system: "&e• &fImprove your combat skills with the combo system!"
+  hit_system: "&e• &fEvery successful hit increases your combo points"
+  sound_effects: "&e• &fDifferent sounds and effects based on combo points"
+  leaderboard: "&e• &fCompete with other players on the leaderboard"
+  titles: "&e• &fEarn special titles based on your combo levels"
+  commands: "&a• &7Commands: &f/combatmaster help"
+  discord: "&a• &7Discord: &fhttps://discord.com/users/871721944268038175"
+  github: "&a• &7GitHub: &fhttps://github.com/amhunter1"
+
+# Combat Information
+combat_info:
+  timeout: "&f▸ Combo Timeout: &e{} seconds"
+  sounds: "&f▸ Sound Effects: {}"
+  actionbar: "&f▸ Action Bar: {}"
+  mob_hits: "&f▸ Mob Hits: {}"
+  sounds: "&f▸ Sound Effects: {0}"
+  actionbar: "&f▸ Action Bar: {0}"
+  mob_hits: "&f▸ Mob Hits: {0}"
+  server_settings: "&7This information depends on server settings"
+
+# General
+general:
+  continue: "&aKeep going, you can do it!"
+  loading: "&eLoading..."
+  error: "&cAn error occurred!"
+  success: "&aSuccessful!"
+  click_for_details: "&aClick for details!"
+  click_for_leaderboard: "&eClick for leaderboard!"
+  click_for_settings: "&dClick for settings!"
+  click_for_admin: "&cClick for admin panel!"
+  click_for_help: "&bClick for information!"

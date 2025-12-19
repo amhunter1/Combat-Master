@@ -35,6 +35,10 @@
                   <pattern>com.zaxxer.hikari</pattern>
                   <shadedPattern>com.melut.combatmaster.lib.hikari</shadedPattern>
                 </relocation>
+                <relocation>
+                  <pattern>org.bstats</pattern>
+                  <shadedPattern>com.melut.combatmaster.lib.bstats</shadedPattern>
+                </relocation>
               </relocations>
             </configuration>
           </execution>

@@ -32,7 +32,7 @@ public class LeaderboardMenu extends BaseGUI {
         
         if (leaderboardData == null || leaderboardData.isEmpty()) {
             setItem(22, ItemBuilder.create(Material.BARRIER)
-                    .setName("&c" + plugin.getLangManager().getMessage("leaderboard.no_data", "Henüz veri yok"))
+                    .setName("&c" + plugin.getLangManager().getMessage("gui.leaderboard.no_data"))
                     .setLore(
                         "&7İlk combo'ları yaparak",
                         "&7sıralamaya katılın!"

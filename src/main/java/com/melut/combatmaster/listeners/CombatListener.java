@@ -43,7 +43,7 @@ public class CombatListener implements Listener {
             return;
         }
 
-        if (!plugin.getConfigManager().isGroundHitsEnabled() && !attacker.isOnGround()) {
+        if (!plugin.getConfigManager().isGroundHitsEnabled() && attacker.getLocation().getY() != attacker.getLocation().getBlockY()) {
             return;
         }
 

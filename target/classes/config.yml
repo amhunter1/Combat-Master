@@ -1,0 +1,190 @@
+# Combat-Master Plugin Configuration
+##############################################################################
+#                                                                            #
+#  This plugin was developed by [Melüt].                                     #
+#                                                                            #
+#  For support, contributions, or to connect:                                #
+#  Discord Community: [https://discord.com/users/871721944268038175]         #
+#  GitHub Repository: [https://github.com/amhunter1]                         #
+#                                                                            #
+#  Thank you for using this plugin!                                          #
+#                                                                            #
+##############################################################################
+# Dil ayarları
+language: "tr"  # Desteklenen diller: tr, en
+# Ses ayarları
+sounds:
+  enabled: true
+  
+  # Combo seviyelerine göre farklı sesler
+  combo-sounds:
+    # 1-5 hit arası
+    low:
+      sound: "ENTITY_PLAYER_ATTACK_STRONG"
+      volume: 0.8
+      pitch: 1.0
+    # 6-15 hit arası  
+    medium:
+      sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+      volume: 1.0
+      pitch: 1.2
+    # 16-30 hit arası
+    high:
+      sound: "ENTITY_PLAYER_LEVELUP"
+      volume: 1.2
+      pitch: 1.5
+    # 31+ hit arası
+    epic:
+      sound: "ENTITY_ENDER_DRAGON_GROWL"
+      volume: 1.5
+      pitch: 2.0
+  
+  # Combo sıfırlanma sesi
+  reset-sound:
+    enabled: true
+    sound: "BLOCK_ANVIL_LAND"
+    volume: 0.5
+    pitch: 0.5
+
+# Combo sistemi
+combo:
+  # Action bar'da gösterilecek mesajlar (döngü halinde)
+  messages:
+    - "İyi Başlangıç!"
+    - "Devam Et!"
+    - "Harikasın!"
+    - "Muhteşem!"
+    - "İnanılmaz!"
+    - "Efsane!"
+    - "Destansı!"
+    - "Görülmemiş!"
+    - "Tanrısal!"
+    - "İmkansız!"
+    - "Legendary!"
+    - "Godlike!"
+    - "Unstoppable!"
+    - "Monster Kill!"
+    - "Beyond Godlike!"
+    - "Ultra Kill!"
+    - "Rampage!"
+    - "Dominating!"
+    - "Mega Kill!"
+    - "Wicked Sick!"
+    - "Ludicrous Kill!"
+    - "Holy Shit!"
+    - "Killing Spree!"
+    - "Running Riot!"
+    - "Killing Frenzy!"
+    - "Overkill!"
+    - "Killtacular!"
+    - "Killtrocity!"
+    - "Killimanjaro!"
+    - "Killtastrophe!"
+    - "Killpocalypse!"
+    - "Killionaire!"
+
+  # Kaç hit'te bir mesaj gösterilecek
+  message-interval: 1
+
+  # Action bar ayarları
+  actionbar:
+    enabled: true
+    format: "&e{combo}x &a{message}"
+    
+  # Combo renk sistemi (combo sayısına göre)
+  color-system:
+    enabled: true
+    colors:
+      1-5: "&7"      # Gri
+      6-10: "&f"     # Beyaz
+      11-20: "&e"    # Sarı
+      21-35: "&6"    # Turuncu
+      36-50: "&c"    # Kırmızı
+      51-75: "&d"    # Pembe
+      76-100: "&5"   # Mor
+      101+: "&b"     # Açık Mavi
+
+  # Combo sıfırlama süresi (saniye)
+  timeout-seconds: 10
+  
+  # Mob vuruş sistemi
+  mob-hits:
+    enabled: false  # Moblara vurunca combo saysın mı? (varsayılan: kapalı)
+  
+  # Yerden vuruş sistemi
+  ground-hits:
+    enabled: true  # Yerden vurunca combo devam etsin mi?
+    critical-only: false  # Sadece kritik vuruşlar mı sayılsın?
+
+# Aktif olacak dünyalar (boş ise tüm dünyalar aktif)
+enabled-worlds:
+  - "world"
+  - "world_nether"
+  - "world_the_end"
+
+# Database ayarları
+database:
+  type: "sqlite"  # sqlite veya mysql
+
+  # SQLite ayarları (varsayılan)
+  sqlite:
+    file: "combatmaster.db"
+
+  # MySQL ayarları (opsiyonel)
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "combatmaster"
+    username: "root"
+    password: ""
+    ssl: false
+
+# Leaderboard ayarları
+leaderboard:
+  size: 10
+  title: "&6&l⚔ Combat Sıralaması ⚔"
+  format: "&7{rank}. &e{player} &7- &c{combo} combo"
+
+  # Leaderboard güncelleme aralığı (saniye)
+  update-interval: 30
+
+# GUI/Menü ayarları
+gui:
+  # Menü ses efektleri
+  sounds:
+    enabled: true
+    open: "BLOCK_CHEST_OPEN"
+    click: "UI_BUTTON_CLICK"
+    success: "ENTITY_EXPERIENCE_ORB_PICKUP"
+    error: "ENTITY_VILLAGER_NO"
+    close: "BLOCK_CHEST_CLOSE"
+    
+  # Menü performans ayarları
+  performance:
+    auto-refresh-interval: 30  # saniye
+    max-open-menus: 50        # maksimum eşzamanlı açık menü sayısı
+    cache-player-data: true   # oyuncu verilerini cache'le
+    
+  # Menü görünüm ayarları
+  appearance:
+    use-borders: true         # menülerde kenarlık kullan
+    use-animations: true      # menü animasyonları (glow vs.)
+    items-per-page: 21       # leaderboard sayfa başı item sayısı
+
+# Mesajlar
+messages:
+  no-permission: "&cBu komutu kullanma yetkiniz yok!"
+  plugin-reloaded: "&aPlugin başarıyla yeniden yüklendi!"
+  player-not-found: "&cOyuncu bulunamadı!"
+  world-disabled: "&cBu dünyada combat sistemi aktif değil!"
+##############################################################################
+#                                                                            #
+#  This plugin was developed by [Melüt].                                     #
+#                                                                            #
+#  For support, contributions, or to connect:                                #
+#  Discord Community: [https://discord.com/users/871721944268038175]         #
+#  GitHub Repository: [https://github.com/amhunter1]                         #
+#                                                                            #
+#  Thank you for using this plugin!                                          #
+#                                                                            #
+##############################################################################

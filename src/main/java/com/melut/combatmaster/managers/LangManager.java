@@ -94,6 +94,14 @@ public class LangManager {
     public String getMessage(String key, Object... replacements) {
         String message = getMessage(key);
         
+        // Önce yeni {} formatını kontrol et
+        for (Object replacement : replacements) {
+            if (message.contains("{}")) {
+                message = message.replaceFirst("\\{\\}", String.valueOf(replacement));
+            }
+        }
+        
+        // Eski {0}, {1} formatı için fallback
         for (int i = 0; i < replacements.length; i++) {
             message = message.replace("{" + i + "}", String.valueOf(replacements[i]));
         }

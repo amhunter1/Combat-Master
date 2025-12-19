@@ -1,166 +1,410 @@
-# Combat Master
+# ⚔️ Combat Master
 
-Gelişmiş combo sayacı, ses efektleri, miss (ıskalama) algılama, renk sistemi, veritabanı ve liderlik tablosu özelliklerine sahip bir Minecraft (Spigot/Paper) eklentisi.
+<div align="center">
 
-[Download/indirme link](https://modrinth.com/plugin/combat-master)
+**Profesyonel GUI menü sistemi, çok dil desteği ve gelişmiş özelliklere sahip Minecraft combat plugin'i**
 
-A powerful Minecraft (Spigot/Paper) combat plugin with advanced combo counter, sounds, miss detection, color system, database and leaderboard.
+[![bStats](https://img.shields.io/badge/bStats-28408-brightgreen.svg)](https://bstats.org/plugin/bukkit/Combat-Master/28408)
+[![Version](https://img.shields.io/badge/version-v1.0.0-blue.svg)](https://github.com/amhunter1/Combat-Master)
+[![Java](https://img.shields.io/badge/Java-17%2B-orange.svg)](https://adoptium.net/)
+[![Minecraft](https://img.shields.io/badge/Minecraft-1.20%2B-green.svg)](https://www.spigotmc.org/)
+
+[📥 Download/İndir](https://modrinth.com/plugin/combat-master) • 
+[📖 Wiki](https://github.com/amhunter1/Combat-Master/wiki) • 
+[💬 Discord](https://discord.com/users/871721944268038175) • 
+[🐛 Issues](https://github.com/amhunter1/Combat-Master/issues)
+
+</div>
 
 ---
 
 ## 🇹🇷 Türkçe
 
-### Özellikler
-- Gelişmiş ses sistemi: combo seviyesine göre farklı sesler, miss ve reset sesleri (`src/main/resources/config.yml`/`sounds`).
-- Zengin combo mesajları ve action bar formatı (`combo.messages`, `combo.actionbar`).
-- Miss (ıskalama) algılama ve opsiyonel combo sıfırlama (`combo.miss-system`).
-- Combo sayısına göre renk sistemi (`combo.color-system`).
-- SQLite (varsayılan) ve MySQL desteği, HikariCP bağlantı havuzu (`database`).
-- Liderlik tablosu ve periyodik güncelleme (`leaderboard`).
-- PlaceholderAPI entegrasyonu (opsiyonel, `softdepend`).
-- Komutlar ve izinler ile yönetim.
+### ✨ Ana Özellikler
 
-### Gereksinimler
-- Java 17+
-- Spigot/Paper 1.20+
-- (Opsiyonel) PlaceholderAPI
+#### 🖥️ **Profesyonel GUI Menü Sistemi**
+- **Ana Menü**: Combat hub'ı - tüm özelliklere merkezi erişim
+- **İstatistik Menüsü**: Detaylı oyuncu performans analizi ve ilerleme takibi  
+- **Sıralama Menüsü**: Sayfalı leaderboard sistemi (21 oyuncu/sayfa)
+- **Admin Panel**: Kapsamlı yönetici araçları ve sistem monitörü
+- **Ayarlar Menüsü**: Detaylı konfigürasyon görüntüleyici
+- **Oyuncu Yönetimi**: Online oyuncu yönetim araçları
+- **Hızlı Komutlar**: One-click admin işlemleri
 
-### Kurulum
-1. Yayınlanan jar dosyasını `plugins/` klasörüne kopyalayın.
-2. Sunucuyu başlatın ve `plugins/Combat-Master/` altında `config.yml` oluşturulmasına izin verin.
-3. Gerekirse `config.yml` dosyasını düzenleyin.
-4. (Opsiyonel) PlaceholderAPI kurun ve gerekli placeholderları kullanın.
+#### 🌍 **Çok Dil Desteği**
+- **Türkçe (TR)** ve **İngilizce (EN)** tam desteği
+- Dinamik dil değişimi (`config.yml` → `language: tr/en`)
+- Özelleştirilebilir çeviri dosyaları (`lang/tr.yml`, `lang/en.yml`)
+- Fallback sistemi (eksik çevirilerde otomatik TR)
 
-### Konfigürasyon
-`src/main/resources/config.yml` ana anahtarları:
-- `sounds.enabled`: Sesleri aç/kapat.
-- `sounds.combo-sounds.low|medium|high|epic`: `sound`, `volume`, `pitch`.
-- `sounds.miss-sound`: `enabled`, `sound`, `volume`, `pitch`.
-- `sounds.reset-sound`: `enabled`, `sound`, `volume`, `pitch`.
-- `combo.messages`: Action bar mesaj döngüsü.
-- `combo.message-interval`: Kaç vuruşta bir mesaj.
-- `combo.actionbar.enabled`, `combo.actionbar.format`: Örn. `&e{combo}x &a{message}`.
-- `combo.color-system.enabled`, `combo.color-system.colors`: Aralık -> renk `&` kodu.
-- `combo.timeout-seconds`: Son vuruştan sonra combo sıfırlama süresi.
-- `combo.miss-system.enabled`, `combo.miss-system.reset-on-miss`: Miss algılama ve sıfırlama.
-- `enabled-worlds`: Boş değilse sadece bu dünyalarda aktif.
-- `database.type`: `sqlite` veya `mysql`.
-  - `database.sqlite.file`: SQLite dosya adı.
-  - `database.mysql.*`: `host`, `port`, `database`, `username`, `password`, `ssl`.
-- `leaderboard.size`, `leaderboard.title`, `leaderboard.format`, `leaderboard.update-interval`.
-- `messages.*`: İzin, reload, oyuncu bulunamadı, dünya pasif mesajları.
+#### ⚡ **Gelişmiş Combat Sistemi**
+- Combo seviyelerine göre dinamik ses efektleri
+- Real-time action bar mesajları ve renk sistemi
+- Gelişmiş combo algılama ve timeout yönetimi
+- Mob/player vuruş seçenekleri
+- Dünya bazlı etkinleştirme
 
-Renk ve formatlarda `&` renk kodları desteklenir. Yer tutucular:
-- `{combo}`: Mevcut combo sayısı
-- `{message}`: Mesaj döngüsündeki metin
-- `leaderboard.format` içinde: `{rank}`, `{player}`, `{combo}`
+#### 📊 **Database & Analytics**
+- **SQLite** (varsayılan) ve **MySQL** desteği
+- **HikariCP** connection pooling
+- **bStats** entegrasyonu (Plugin ID: 28408)
+- Otomatik veri kaydetme ve yedekleme
 
-### Komutlar
-- `/combatmaster [reload|stats|reset|info|top]`
-  - `stats [player]`: Oyuncu istatistiklerini gösterir.
-  - `top`: Liderlik tablosunu gösterir.
-  - `reload`: Konfigürasyonu yeniden yükler. (admin)
-  - `reset [player]`: Oyuncunun verilerini sıfırlar. (admin)
-  - `info`: Eklenti hakkında bilgi. (admin)
+### 🚀 Hızlı Başlangıç
 
-### İzinler
-- `combatmaster.admin` (varsayılan: `op`): Yönetim komutlarına erişim.
-- `combatmaster.use` (varsayılan: `true`): Temel kullanım (stats, top).
+#### Gereksinimler
+- **Java 17+**
+- **Spigot/Paper 1.20+**
+- **PlaceholderAPI** (opsiyonel)
 
-### Placeholderlar (PlaceholderAPI)
-Aşağıdaki örnekler PAPI ile kullanılabilir (PAPI yüklüyse):
-- `%combatmaster_combo%`: Anlık combo.
-- `%combatmaster_best_combo%`: Oyuncunun en iyi combosu.
-- `%combatmaster_total_hits%`: Toplam vuruş.
-- `%combatmaster_rank%`: Sıralamadaki yeri (yaklaşık/önbellekli olabilir).
+#### Kurulum
+1. **Plugin'i İndir**: [Latest Release](https://github.com/amhunter1/Combat-Master/releases)
+2. **Kur**: JAR dosyasını `plugins/` klasörüne koy
+3. **Başlat**: Sunucuyu restart et
+4. **Yapılandır**: `plugins/Combat-Master/config.yml` dosyasını düzenle
+5. **Dil Seç**: `language: tr` veya `language: en`
 
-Not: Bazı placeholderlar performans için asenkron/önbellekli dönebilir.
+### 🎮 Kullanım
 
-### Veritabanı
-- Varsayılan: SQLite (`plugins/Combat-Master/combatmaster.db`).
-- MySQL için `database.type: mysql` ve bağlantı bilgilerini doldurun.
+#### Temel Komutlar
+```bash
+/combatmaster              # Ana GUI menüsünü açar
+/combatmaster gui          # Ana GUI menüsünü açar  
+/combatmaster stats        # İstatistik menüsünü açar
+/combatmaster top          # Leaderboard menüsünü açar
+/combatmaster reload       # Plugin'i yeniden yükler (admin)
+```
 
-### SSS
-- Combo neden sıfırlanıyor? `combo.timeout-seconds` süresi dolduğunda veya miss (ıskalama) olduğunda (`reset-on-miss: true`).
-- Sesler çalışmıyor? `sounds.enabled: true` olduğundan ve sound adlarının sürümünüzle uyumlu olduğundan emin olun.
-- Bazı dünyalarda çalışmıyor? `enabled-worlds` listesini kontrol edin.
+#### GUI Navigasyonu
+- **Oyuncular**: `/combatmaster` ile ana menüye erişim
+- **Adminler**: `combatmaster.admin` yetkisi ile tam erişim
+- **Menü İçi**: Sezgisel buton sistemi ve navigasyon
+- **Geri/İleri**: Tüm menülerde tutarlı navigasyon
+
+### ⚙️ Konfigürasyon
+
+#### Ana Config (`config.yml`)
+```yaml
+# Dil Ayarları
+language: "tr"  # tr, en
+
+# GUI Ayarları
+gui:
+  sounds:
+    enabled: true
+    open: "BLOCK_CHEST_OPEN"
+    click: "UI_BUTTON_CLICK"
+  performance:
+    auto-refresh-interval: 30
+    max-open-menus: 50
+  appearance:
+    use-borders: true
+    items-per-page: 21
+
+# Combat Sistemi
+sounds:
+  enabled: true
+  combo-sounds:
+    low: {sound: "ENTITY_PLAYER_ATTACK_STRONG", volume: 0.8, pitch: 1.0}
+    medium: {sound: "ENTITY_EXPERIENCE_ORB_PICKUP", volume: 1.0, pitch: 1.2}
+    high: {sound: "ENTITY_PLAYER_LEVELUP", volume: 1.2, pitch: 1.5}
+    epic: {sound: "ENTITY_ENDER_DRAGON_GROWL", volume: 1.5, pitch: 2.0}
+
+combo:
+  timeout-seconds: 10
+  color-system:
+    enabled: true
+    colors:
+      1-5: "&7"    # Gri
+      6-10: "&f"   # Beyaz  
+      11-20: "&e"  # Sarı
+      21-35: "&6"  # Turuncu
+      36-50: "&c"  # Kırmızı
+      51-75: "&d"  # Pembe
+      76-100: "&5" # Mor
+      101+: "&b"   # Açık Mavi
+
+# Database
+database:
+  type: "sqlite"  # sqlite, mysql
+  sqlite:
+    file: "combatmaster.db"
+```
+
+#### Dil Dosyaları
+- **Türkçe**: `plugins/Combat-Master/lang/tr.yml`
+- **İngilizce**: `plugins/Combat-Master/lang/en.yml`
+- **Özelleştirme**: Dosyaları düzenleyerek metinleri değiştirin
+
+### 🛠️ Admin Araçları
+
+#### GUI Admin Panel
+- **Plugin Yönetimi**: Reload, restart, system info
+- **Oyuncu Yönetimi**: Online player tracking, combo reset
+- **Database Yönetimi**: Backup, statistics, cleanup
+- **Hızlı Komutlar**: Toplu işlemler, emergency stop
+- **Sistem İzleme**: Memory, performance, metrics
+
+#### İzinler
+- `combatmaster.use` (varsayılan: `true`) - Temel kullanım
+- `combatmaster.admin` (varsayılan: `op`) - Admin erişimi
+
+### 📈 PlaceholderAPI
+
+```bash
+%combatmaster_combo%        # Mevcut combo
+%combatmaster_best_combo%   # En iyi combo
+%combatmaster_total_hits%   # Toplam hit
+%combatmaster_rank%         # Sıralamadaki yer
+```
+
+### 💡 İpuçları & SSS
+
+**Q: Menüler açılmıyor?**
+A: `combatmaster.use` izninin olduğundan emin olun.
+
+**Q: Dil değişmiyor?**
+A: `config.yml`'de `language: tr` veya `language: en` ayarladıktan sonra `/combatmaster reload`
+
+**Q: Sesler çalışmıyor?**
+A: `sounds.enabled: true` olduğundan emin olun, ses adları sunucu versiyonuyla uyumlu olmalı.
 
 ---
 
 ## 🇬🇧 English
 
-### Features
-- Advanced sound system by combo tiers, miss and reset sounds (`config.yml`/`sounds`).
-- Rich combo messages and action bar formatting (`combo.messages`, `combo.actionbar`).
-- Miss detection with optional combo reset (`combo.miss-system`).
-- Combo-based color system (`combo.color-system`).
-- SQLite (default) and MySQL support via HikariCP (`database`).
-- Leaderboard with periodic refresh (`leaderboard`).
-- Optional PlaceholderAPI integration (`softdepend`).
-- Commands and permissions for administration.
+### ✨ Key Features
 
-### Requirements
-- Java 17+
-- Spigot/Paper 1.20+
-- (Optional) PlaceholderAPI
+#### 🖥️ **Professional GUI Menu System**
+- **Main Menu**: Combat hub with centralized access to all features
+- **Stats Menu**: Detailed player performance analysis and progress tracking
+- **Leaderboard Menu**: Paginated ranking system (21 players/page)
+- **Admin Panel**: Comprehensive management tools and system monitoring
+- **Settings Menu**: Detailed configuration viewer
+- **Player Management**: Online player management tools
+- **Quick Commands**: One-click admin operations
 
-### Installation
-1. Drop the released jar into the `plugins/` folder.
-2. Start the server to generate `config.yml` under `plugins/Combat-Master/`.
-3. Edit `config.yml` as needed.
-4. (Optional) Install PlaceholderAPI to use placeholders.
+#### 🌍 **Multi-Language Support**
+- **Turkish (TR)** and **English (EN)** full support
+- Dynamic language switching (`config.yml` → `language: tr/en`)
+- Customizable translation files (`lang/tr.yml`, `lang/en.yml`)  
+- Fallback system (automatic TR fallback for missing translations)
 
-### Configuration
-Main keys in `src/main/resources/config.yml`:
-- `sounds.enabled`
-- `sounds.combo-sounds.low|medium|high|epic` with `sound`, `volume`, `pitch`
-- `sounds.miss-sound` and `sounds.reset-sound`
-- `combo.messages`, `combo.message-interval`
-- `combo.actionbar.enabled`, `combo.actionbar.format`
-- `combo.color-system.enabled`, `combo.color-system.colors`
-- `combo.timeout-seconds`
-- `combo.miss-system.enabled`, `combo.miss-system.reset-on-miss`
-- `enabled-worlds`
-- `database.type`, `database.sqlite.file`, `database.mysql.*`
-- `leaderboard.size`, `leaderboard.title`, `leaderboard.format`, `leaderboard.update-interval`
-- `messages.*`
+#### ⚡ **Advanced Combat System**
+- Dynamic sound effects based on combo levels
+- Real-time action bar messages and color system
+- Advanced combo detection and timeout management
+- Mob/player hit options
+- World-based activation
 
-Placeholders in formats:
-- `{combo}`, `{message}` for action bar
-- `{rank}`, `{player}`, `{combo}` for leaderboard format
+#### 📊 **Database & Analytics**
+- **SQLite** (default) and **MySQL** support
+- **HikariCP** connection pooling
+- **bStats** integration (Plugin ID: 28408)
+- Automatic data saving and backup
 
-### Commands
-- `/combatmaster [reload|stats|reset|info|top]`
-  - `stats [player]`: Shows player stats.
-  - `top`: Shows leaderboard.
-  - `reload`: Reloads configuration. (admin)
-  - `reset [player]`: Resets player data. (admin)
-  - `info`: About plugin. (admin)
+### 🚀 Quick Start
 
-### Permissions
-- `combatmaster.admin` (default: `op`): Access to admin commands.
-- `combatmaster.use` (default: `true`): Basic usage (stats, top).
+#### Requirements
+- **Java 17+**
+- **Spigot/Paper 1.20+**
+- **PlaceholderAPI** (optional)
 
-### Placeholders (PlaceholderAPI)
-- `%combatmaster_combo%`
-- `%combatmaster_best_combo%`
-- `%combatmaster_total_hits%`
-- `%combatmaster_rank%`
+#### Installation
+1. **Download Plugin**: [Latest Release](https://github.com/amhunter1/Combat-Master/releases)
+2. **Install**: Place JAR file in `plugins/` folder
+3. **Start**: Restart the server
+4. **Configure**: Edit `plugins/Combat-Master/config.yml`
+5. **Set Language**: `language: tr` or `language: en`
 
-Note: Some placeholders may be async/cached for performance.
+### 🎮 Usage
 
-### Database
-- Default SQLite at `plugins/Combat-Master/combatmaster.db`.
-- For MySQL set `database.type: mysql` and configure credentials.
+#### Basic Commands
+```bash
+/combatmaster              # Opens main GUI menu
+/combatmaster gui          # Opens main GUI menu
+/combatmaster stats        # Opens stats menu
+/combatmaster top          # Opens leaderboard menu
+/combatmaster reload       # Reloads plugin (admin)
+```
 
-### FAQ
-- Why is my combo resetting? Timeout (`combo.timeout-seconds`) or miss when `reset-on-miss: true`.
-- No sounds? Ensure `sounds.enabled: true` and sound names match your server version.
-- Not active in some worlds? Check `enabled-worlds` list.
+#### GUI Navigation
+- **Players**: Access main menu with `/combatmaster`
+- **Admins**: Full access with `combatmaster.admin` permission
+- **In-Menu**: Intuitive button system and navigation
+- **Back/Forward**: Consistent navigation across all menus
+
+### ⚙️ Configuration
+
+#### Main Config (`config.yml`)
+```yaml
+# Language Settings
+language: "en"  # tr, en
+
+# GUI Settings
+gui:
+  sounds:
+    enabled: true
+    open: "BLOCK_CHEST_OPEN"
+    click: "UI_BUTTON_CLICK"
+  performance:
+    auto-refresh-interval: 30
+    max-open-menus: 50
+  appearance:
+    use-borders: true
+    items-per-page: 21
+
+# Combat System
+sounds:
+  enabled: true
+  combo-sounds:
+    low: {sound: "ENTITY_PLAYER_ATTACK_STRONG", volume: 0.8, pitch: 1.0}
+    medium: {sound: "ENTITY_EXPERIENCE_ORB_PICKUP", volume: 1.0, pitch: 1.2}
+    high: {sound: "ENTITY_PLAYER_LEVELUP", volume: 1.2, pitch: 1.5}
+    epic: {sound: "ENTITY_ENDER_DRAGON_GROWL", volume: 1.5, pitch: 2.0}
+
+combo:
+  timeout-seconds: 10
+  color-system:
+    enabled: true
+    colors:
+      1-5: "&7"    # Gray
+      6-10: "&f"   # White
+      11-20: "&e"  # Yellow
+      21-35: "&6"  # Orange
+      36-50: "&c"  # Red
+      51-75: "&d"  # Pink
+      76-100: "&5" # Purple
+      101+: "&b"   # Aqua
+
+# Database
+database:
+  type: "sqlite"  # sqlite, mysql
+  sqlite:
+    file: "combatmaster.db"
+```
+
+#### Language Files
+- **Turkish**: `plugins/Combat-Master/lang/tr.yml`
+- **English**: `plugins/Combat-Master/lang/en.yml`
+- **Customize**: Edit files to change messages
+
+### 🛠️ Admin Tools
+
+#### GUI Admin Panel
+- **Plugin Management**: Reload, restart, system info
+- **Player Management**: Online player tracking, combo reset
+- **Database Management**: Backup, statistics, cleanup  
+- **Quick Commands**: Bulk operations, emergency stop
+- **System Monitoring**: Memory, performance, metrics
+
+#### Permissions
+- `combatmaster.use` (default: `true`) - Basic usage
+- `combatmaster.admin` (default: `op`) - Admin access
+
+### 📈 PlaceholderAPI
+
+```bash
+%combatmaster_combo%        # Current combo
+%combatmaster_best_combo%   # Best combo
+%combatmaster_total_hits%   # Total hits
+%combatmaster_rank%         # Rank position
+```
+
+### 💡 Tips & FAQ
+
+**Q: Menus not opening?**
+A: Ensure you have `combatmaster.use` permission.
+
+**Q: Language not changing?**
+A: Set `language: tr` or `language: en` in `config.yml`, then `/combatmaster reload`
+
+**Q: Sounds not working?**
+A: Ensure `sounds.enabled: true`, sound names must match your server version.
 
 ---
 
-## Lisans / License
-Bu proje kapalı kaynak bir örnektir; dağıtım koşulları proje sahibine aittir. Aksi belirtilmedikçe tüm hakları saklıdır.
+## 🔧 Development
 
-This project is a closed-source example; distribution terms belong to the owner. All rights reserved unless stated otherwise.
+### Project Structure
+```
+src/main/java/com/melut/combatmaster/
+├── gui/                    # GUI Framework
+│   ├── BaseGUI.java       # Base menu class
+│   ├── MenuManager.java   # Menu management
+│   ├── MenuListener.java  # Click handling
+│   ├── utils/             # GUI utilities
+│   └── menus/             # All menu implementations
+├── managers/              # Core managers
+│   ├── CombatManager.java # Combat logic
+│   ├── ConfigManager.java # Config handling
+│   └── LangManager.java   # Language system
+├── database/              # Database layer
+└── listeners/             # Event listeners
+
+src/main/resources/
+├── config.yml            # Main configuration
+├── plugin.yml           # Plugin metadata
+└── lang/               # Language files
+    ├── tr.yml         # Turkish
+    └── en.yml         # English
+```
+
+### Building
+```bash
+git clone https://github.com/amhunter1/Combat-Master.git
+cd Combat-Master
+mvn clean package
+```
+
+### Contributing
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+---
+
+## 📊 Statistics
+
+- **📈 bStats**: [View Plugin Statistics](https://bstats.org/plugin/bukkit/Combat-Master/28408)
+- **⭐ GitHub**: [Star the Repository](https://github.com/amhunter1/Combat-Master)
+- **🐛 Issues**: [Report Bugs](https://github.com/amhunter1/Combat-Master/issues)
+
+---
+
+## 📞 Support & Contact
+
+<div align="center">
+
+**🔗 Links**
+- **Discord**: [Contact Developer](https://discord.com/users/871721944268038175)
+- **GitHub**: [Project Repository](https://github.com/amhunter1/Combat-Master)  
+- **Download**: [Modrinth Page](https://modrinth.com/plugin/combat-master)
+
+**💝 Support the Project**
+- ⭐ Star the repository
+- 🐛 Report issues and bugs
+- 💡 Suggest new features
+- 🤝 Contribute code improvements
+
+</div>
+
+---
+
+## 📄 License
+
+This project is closed-source. Distribution terms belong to the owner. All rights reserved unless stated otherwise.
+
+Bu proje kapalı kaynak kodludur. Dağıtım koşulları proje sahibine aittir. Aksi belirtilmedikçe tüm hakları saklıdır.
+
+---
+
+<div align="center">
+
+**⚔️ Combat Master v1.0.0**
+
+*Made with ❤️ by [Melut](https://github.com/amhunter1)*
+
+</div>
