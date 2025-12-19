@@ -65,7 +65,7 @@ gui:
     current_combo_desc: "&7Şu anki combo seviyeniz"
     best_combo_desc: "&7Şimdiye kadarki en yüksek combo"
     total_hits_desc: "&7Toplam başarılı vuruş sayısı"
-    rank_desc: "&7Combat liderlik tablosundaki pozisyonunuz"
+    rank_desc: "&7Combat liderlik tablosundaki sıralamanız"
     combat_info_desc: "&7Combat sistemi hakkında bilgiler"
     progress_desc: "&7Bir sonraki seviye için ilerlemeniz"
     
@@ -75,11 +75,11 @@ gui:
     total_hits_value: "&b{}"
     level: "&fSeviye: {}"
     rank_value: "&a#{}"
-    no_rank: "&7Henüz sıralamada değilsiniz"
+    no_rank: "&7Henüz sıralama dışısınız"
     
     # Feature Status
     active_combo: "&aAktif combo devam ediyor!"
-    no_combo: "&7Henüz combo başlatılmadı"
+    no_combo: "&7Henüz combo başlatılmamış"
     sounds_on: "&aAktif"
     sounds_off: "&cKapalı"
 
@@ -132,7 +132,7 @@ ranks:
 combo_descriptions:
   none: "İlk combo'nuzu yapmaya hazırlanın!"
   beginner: "Güzel başlangıç! Devam edin."
-  good: "İyi gidiyorsunuz! Ritim tutun."
+  good: "İyi gidiyorsunuz! Ritmi tutun."
   impressive: "Etkileyici performans! Harika."
   outstanding: "Olağanüstü yetenek! Muhteşem."
   legendary: "Efsanevi seviye! İnanılmaz."

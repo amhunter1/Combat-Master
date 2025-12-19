@@ -23,21 +23,7 @@ public class StatsMenu extends BaseGUI {
         int bestCombo = playerData != null ? playerData.getBestCombo() : 0;
         int totalHits = playerData != null ? playerData.getTotalHits() : 0;
 
-        setItem(11, ItemBuilder.create(Material.GOLDEN_SWORD)
-                .setName(plugin.getLangManager().getGUIItem("current_combo"))
-                .setLore(
-                    plugin.getLangManager().getGUILore("current_combo_desc"),
-                    "",
-                    plugin.getLangManager().getMessage("gui.lore.current_combo_value", GUIUtils.formatNumber(currentCombo)),
-                    "",
-                    currentCombo > 0 ? plugin.getLangManager().getMessage("gui.lore.active_combo") : plugin.getLangManager().getMessage("gui.lore.no_combo")
-                )
-                .setAmount(Math.max(1, Math.min(64, currentCombo)))
-                .setGlowing(currentCombo > 0)
-                .build()
-        );
-
-        setItem(13, ItemBuilder.create(GUIUtils.getComboMaterial(bestCombo))
+        setItem(11, ItemBuilder.create(GUIUtils.getComboMaterial(bestCombo))
                 .setName(plugin.getLangManager().getGUIItem("best_combo"))
                 .setLore(
                     plugin.getLangManager().getGUILore("best_combo_desc"),
@@ -52,7 +38,7 @@ public class StatsMenu extends BaseGUI {
                 .build()
         );
 
-        setItem(15, ItemBuilder.create(Material.DIAMOND)
+        setItem(13, ItemBuilder.create(Material.DIAMOND)
                 .setName(plugin.getLangManager().getGUIItem("total_hits"))
                 .setLore(
                     plugin.getLangManager().getGUILore("total_hits_desc"),

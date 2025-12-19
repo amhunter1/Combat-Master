@@ -54,19 +54,6 @@ public class MainMenu extends BaseGUI {
             p -> plugin.getMenuManager().openMenu(p, new LeaderboardMenu(plugin, p))
         );
 
-        setItem(14, ItemBuilder.create(Material.REDSTONE)
-                .setName(plugin.getLangManager().getGUIItem("settings"))
-                .setLore(
-                    plugin.getLangManager().getGUILore("settings_desc"),
-                    "",
-                    "&f▸ " + plugin.getLangManager().getMessage("combat_info.sounds"),
-                    "&f▸ " + plugin.getLangManager().getMessage("combat_info.actionbar"),
-                    "",
-                    plugin.getLangManager().getMessage("general.click_for_settings")
-                )
-                .build(),
-            p -> plugin.getMenuManager().openMenu(p, new SettingsMenu(plugin, p))
-        );
 
         if (player.hasPermission("combatmaster.admin")) {
             setItem(16, ItemBuilder.create(Material.COMMAND_BLOCK)
