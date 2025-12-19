@@ -96,6 +96,11 @@ commands:
   reset_usage: "&e/combatmaster reset [player] &f- Reset player combo (admin)"
   info_usage: "&e/combatmaster info &f- Plugin information (admin)"
   gui_usage: "&e/combatmaster gui &f- Open main menu"
+  player_only: "&cThis command can only be used by players!"
+  console_specify_player: "&cYou must specify a player name from console!"
+  no_combat_data: "&7This player has no combat data yet."
+  combo_reset: "&a{}'s combo has been reset."
+  combo_reset_notify: "&cYour combat combo has been reset by an administrator."
   
 # System Messages
 system:
@@ -105,6 +110,7 @@ system:
   config_reloaded: "&aConfiguration files reloaded!"
   menu_error: "&cError occurred in menu operation!"
   stats_updated: "&a✓ Statistics updated!"
+  config_error: "&cError occurred while reloading plugin: {}"
   
 # Combat Levels
 levels:
@@ -156,9 +162,6 @@ combat_info:
   sounds: "&f▸ Sound Effects: {}"
   actionbar: "&f▸ Action Bar: {}"
   mob_hits: "&f▸ Mob Hits: {}"
-  sounds: "&f▸ Sound Effects: {0}"
-  actionbar: "&f▸ Action Bar: {0}"
-  mob_hits: "&f▸ Mob Hits: {0}"
   server_settings: "&7This information depends on server settings"
 
 # General
