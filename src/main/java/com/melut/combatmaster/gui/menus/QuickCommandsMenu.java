@@ -158,7 +158,7 @@ public class QuickCommandsMenu extends BaseGUI {
             p -> {
                 refresh();
                 playSuccessSound();
-                p.sendMessage("&a✓ Hızlı komut menüsü güncellendi!");
+                p.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ Hızlı komut menüsü güncellendi!"));
             }
         );
 
@@ -180,8 +180,8 @@ public class QuickCommandsMenu extends BaseGUI {
             }
         }
         
-        admin.sendMessage("&a✓ " + resetCount + " oyuncunun combo'su sıfırlandı!");
-        plugin.getServer().broadcastMessage("&c⚡ &lTüm combo'lar bir yönetici tarafından sıfırlandı!");
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ " + resetCount + " oyuncunun combo'su sıfırlandı!"));
+        plugin.getServer().broadcastMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&c⚡ &lTüm combo'lar bir yönetici tarafından sıfırlandı!"));
         
         plugin.getLogger().info(admin.getName() + " tarafından tüm combo'lar sıfırlandı.");
         playSuccessSound();
@@ -192,7 +192,7 @@ public class QuickCommandsMenu extends BaseGUI {
         int closedCount = plugin.getMenuManager().getOpenMenuCount();
         plugin.getMenuManager().closeAllMenus();
         
-        admin.sendMessage("&a✓ " + closedCount + " adet menü kapatıldı!");
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ " + closedCount + " adet menü kapatıldı!"));
         plugin.getLogger().info(admin.getName() + " tarafından tüm menüler kapatıldı.");
         
         playSuccessSound();
@@ -208,11 +208,11 @@ public class QuickCommandsMenu extends BaseGUI {
         
         try {
             plugin.reloadPlugin();
-            admin.sendMessage("&a✓ Plugin başarıyla yeniden yüklendi!");
+            admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ Plugin başarıyla yeniden yüklendi!"));
             plugin.getLogger().info(admin.getName() + " tarafından plugin reload edildi.");
             playSuccessSound();
         } catch (Exception e) {
-            admin.sendMessage("&c✗ Plugin reload hatası: " + e.getMessage());
+            admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&c✗ Plugin reload hatası: " + e.getMessage()));
             plugin.getLogger().severe("Plugin reload hatası: " + e.getMessage());
             playErrorSound();
         }
@@ -221,8 +221,8 @@ public class QuickCommandsMenu extends BaseGUI {
     private void executeSaveAllData(Player admin) {
         plugin.getCombatManager().saveAllData();
         
-        admin.sendMessage("&a✓ Tüm oyuncu verileri database'e kaydedildi!");
-        admin.sendMessage("&7Etkilenen oyuncu sayısı: &e" + plugin.getServer().getOnlinePlayers().size());
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ Tüm oyuncu verileri database'e kaydedildi!"));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&7Etkilenen oyuncu sayısı: &e" + plugin.getServer().getOnlinePlayers().size()));
         
         plugin.getLogger().info(admin.getName() + " tarafından tüm veriler kaydedildi.");
         playSuccessSound();
@@ -236,31 +236,31 @@ public class QuickCommandsMenu extends BaseGUI {
         long usedMemory = totalMemory - freeMemory;
         
         admin.sendMessage("");
-        admin.sendMessage("&d&l📊 Sunucu İstatistikleri");
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&d&l📊 Sunucu İstatistikleri"));
         admin.sendMessage("");
-        admin.sendMessage("&e▸ Online Oyuncular: &a" + plugin.getServer().getOnlinePlayers().size());
-        admin.sendMessage("&e▸ Aktif Combo'lar: &a" + getActiveCombosCount());
-        admin.sendMessage("&e▸ Açık Menüler: &e" + plugin.getMenuManager().getOpenMenuCount());
-        admin.sendMessage("&e▸ Toplam Hit (Online): &b" + getTotalHitsOnline());
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Online Oyuncular: &a" + plugin.getServer().getOnlinePlayers().size()));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Aktif Combo'lar: &a" + getActiveCombosCount()));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Açık Menüler: &e" + plugin.getMenuManager().getOpenMenuCount()));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Toplam Hit (Online): &b" + getTotalHitsOnline()));
         admin.sendMessage("");
-        admin.sendMessage("&e▸ Java Versiyonu: &7" + System.getProperty("java.version"));
-        admin.sendMessage("&e▸ Sunucu: &7" + plugin.getServer().getName() + " " + plugin.getServer().getVersion());
-        admin.sendMessage("&e▸ Plugin Versiyonu: &7" + plugin.getDescription().getVersion());
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Java Versiyonu: &7" + System.getProperty("java.version")));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Sunucu: &7" + plugin.getServer().getName() + " " + plugin.getServer().getVersion()));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Plugin Versiyonu: &7" + plugin.getDescription().getVersion()));
         admin.sendMessage("");
-        admin.sendMessage("&e▸ Kullanılan Bellek: &a" + usedMemory + "MB &7/ &e" + maxMemory + "MB");
-        admin.sendMessage("&e▸ Serbest Bellek: &a" + freeMemory + "MB");
-        admin.sendMessage("&e▸ CPU Çekirdekleri: &7" + runtime.availableProcessors());
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Kullanılan Bellek: &a" + usedMemory + "MB &7/ &e" + maxMemory + "MB"));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Serbest Bellek: &a" + freeMemory + "MB"));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ CPU Çekirdekleri: &7" + runtime.availableProcessors()));
         admin.sendMessage("");
         
         playSuccessSound();
     }
 
     private void executeEmergencyStop(Player admin) {
-        admin.sendMessage("&4⚠️ ACIL DURDURMA BAŞLATILIYOR...");
-        admin.sendMessage("&c5 saniye içinde plugin devre dışı kalacak!");
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&4⚠️ ACIL DURDURMA BAŞLATILIYOR..."));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&c5 saniye içinde plugin devre dışı kalacak!"));
         
-        plugin.getServer().broadcastMessage("&4&l⚠️ UYARI: Combat-Master plugin acil durdurma modunda!");
-        plugin.getServer().broadcastMessage("&cPlugin 5 saniye içinde devre dışı kalacak!");
+        plugin.getServer().broadcastMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&4&l⚠️ UYARI: Combat-Master plugin acil durdurma modunda!"));
+        plugin.getServer().broadcastMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&cPlugin 5 saniye içinde devre dışı kalacak!"));
         
         plugin.getLogger().warning("ACIL DURDURMA: " + admin.getName() + " tarafından başlatıldı!");
         
@@ -268,7 +268,7 @@ public class QuickCommandsMenu extends BaseGUI {
             plugin.getCombatManager().saveAllData();
             plugin.getMenuManager().closeAllMenus();
             
-            plugin.getServer().broadcastMessage("&4Combat-Master plugin güvenli şekilde durduruldu!");
+            plugin.getServer().broadcastMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&4Combat-Master plugin güvenli şekilde durduruldu!"));
             plugin.getLogger().info("Plugin acil durdurma ile güvenli şekilde kapatıldı.");
             
             plugin.getServer().getPluginManager().disablePlugin(plugin);
@@ -282,8 +282,8 @@ public class QuickCommandsMenu extends BaseGUI {
         // JVM Garbage Collection'ı çalıştır
         System.gc();
         
-        admin.sendMessage("&a✓ Cache temizlendi ve bellek optimize edildi!");
-        admin.sendMessage("&7JVM Garbage Collection çalıştırıldı.");
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ Cache temizlendi ve bellek optimize edildi!"));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&7JVM Garbage Collection çalıştırıldı."));
         
         plugin.getLogger().info(admin.getName() + " tarafından cache temizlendi.");
         playSuccessSound();

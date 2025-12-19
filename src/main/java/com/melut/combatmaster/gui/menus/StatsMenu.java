@@ -68,7 +68,7 @@ public class StatsMenu extends BaseGUI {
                     default -> Material.COAL;
                 };
 
-                setItem(21, ItemBuilder.create(rankMaterial)
+                setItem(15, ItemBuilder.create(rankMaterial)
                         .setName(plugin.getLangManager().getGUIItem("rank"))
                         .setLore(
                             plugin.getLangManager().getGUILore("rank_desc"),
@@ -84,7 +84,7 @@ public class StatsMenu extends BaseGUI {
         });
 
         String progressBar = GUIUtils.getProgressBar(bestCombo, getNextLevelTarget(bestCombo), 20);
-        setItem(23, ItemBuilder.create(Material.EXPERIENCE_BOTTLE)
+        setItem(21, ItemBuilder.create(Material.EXPERIENCE_BOTTLE)
                 .setName(plugin.getLangManager().getGUIItem("progress"))
                 .setLore(
                     plugin.getLangManager().getGUILore("progress_desc"),

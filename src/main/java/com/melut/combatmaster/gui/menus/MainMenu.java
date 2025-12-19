@@ -23,7 +23,7 @@ public class MainMenu extends BaseGUI {
         int bestCombo = playerData != null ? playerData.getBestCombo() : 0;
         int totalHits = playerData != null ? playerData.getTotalHits() : 0;
 
-        setItem(13, ItemBuilder.create(Material.PLAYER_HEAD)
+        setItem(11, ItemBuilder.create(Material.PLAYER_HEAD)
                 .setName(plugin.getLangManager().getGUIItem("stats"))
                 .setLore(
                     plugin.getLangManager().getGUILore("stats_desc"),
@@ -41,7 +41,7 @@ public class MainMenu extends BaseGUI {
         );
 
         if (player.hasPermission("combatmaster.admin")) {
-            setItem(15, ItemBuilder.create(Material.COMMAND_BLOCK)
+            setItem(13, ItemBuilder.create(Material.COMMAND_BLOCK)
                     .setName(plugin.getLangManager().getGUIItem("admin"))
                     .setLore(
                         plugin.getLangManager().getGUILore("admin_desc"),
@@ -54,7 +54,7 @@ public class MainMenu extends BaseGUI {
             );
         }
 
-        setItem(17, ItemBuilder.create(Material.GOLDEN_SWORD)
+        setItem(15, ItemBuilder.create(Material.GOLDEN_SWORD)
                 .setName(plugin.getLangManager().getGUIItem("leaderboard"))
                 .setLore(
                     plugin.getLangManager().getGUILore("leaderboard_desc"),

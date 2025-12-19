@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.melut</groupId>
   <artifactId>Combat-Master</artifactId>
-  <version>v1.0.0</version>
+  <version>v2.0.0</version>
   <build>
     <resources>
       <resource>
