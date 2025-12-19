@@ -25,16 +25,16 @@ public class AdminMenu extends BaseGUI {
 
         // Plugin Management Section
         setItem(10, ItemBuilder.create(Material.REDSTONE_TORCH)
-                .setName("&c🔄 Plugin Yönetimi")
+                .setName(plugin.getLangManager().getMessage("gui.admin.plugin_management"))
                 .setLore(
-                    "&7Plugin kontrolü ve yönetimi",
+                    plugin.getLangManager().getMessage("gui.admin.reload_description"),
                     "",
-                    "&f▸ Plugin bilgileri",
-                    "&f▸ Versiyon: &e" + plugin.getDescription().getVersion(),
-                    "&f▸ Aktif menüler: &a" + plugin.getMenuManager().getOpenMenuCount(),
-                    "&f▸ Dil: &e" + plugin.getLangManager().getCurrentLanguage(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.admin.plugin_info_title"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.lore.level") + ": &e" + plugin.getDescription().getVersion(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.page_info") + ": &a" + plugin.getMenuManager().getOpenMenuCount(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.language_settings") + ": &e" + plugin.getLangManager().getCurrentLanguage(),
                     "",
-                    "&eBilgiler için tıkla!"
+                    plugin.getLangManager().getMessage("general.click_for_details")
                 )
                 .setGlowing(true)
                 .build(),
@@ -42,17 +42,17 @@ public class AdminMenu extends BaseGUI {
         );
 
         setItem(12, ItemBuilder.create(Material.REPEATER)
-                .setName("&a♻️ Reload Plugin")
+                .setName(plugin.getLangManager().getMessage("gui.admin.reload_plugin"))
                 .setLore(
-                    "&7Plugini yeniden yükle",
+                    plugin.getLangManager().getMessage("gui.admin.reload_description"),
                     "",
-                    "&f▸ Config dosyalarını yenile",
-                    "&f▸ Dil dosyalarını yenile", 
-                    "&f▸ Tüm ayarları güncelle",
+                    "&f▸ " + plugin.getLangManager().getMessage("system.config_reloaded"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.language_settings"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.settings_updated"),
                     "",
-                    "&c⚠️ Dikkat: Tüm menüler kapanacak!",
+                    plugin.getLangManager().getMessage("gui.admin.reload_warning"),
                     "",
-                    "&aYeniden yükle!"
+                    plugin.getLangManager().getMessage("gui.admin.reload_action")
                 )
                 .build(),
             p -> {
@@ -62,22 +62,22 @@ public class AdminMenu extends BaseGUI {
                     p.sendMessage(plugin.getLangManager().getMessage("commands.plugin_reloaded"));
                     playSuccessSound();
                 } catch (Exception e) {
-                    p.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&cReload hatası: " + e.getMessage()));
+                    p.sendMessage(plugin.getLangManager().getMessage("gui.admin.reload_error", e.getMessage()));
                     playErrorSound();
                 }
             }
         );
 
         setItem(14, ItemBuilder.create(Material.COMPARATOR)
-                .setName("&d⚙️ Database Yönetimi")
+                .setName(plugin.getLangManager().getMessage("gui.admin.database_management"))
                 .setLore(
-                    "&7Database durumu ve istatistikleri",
+                    plugin.getLangManager().getMessage("gui.settings.database_settings"),
                     "",
-                    "&f▸ Database türü: &e" + plugin.getConfigManager().getDatabaseType(),
-                    "&f▸ Bağlantı durumu: &aAktif",
-                    "&f▸ İstatistikler",
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.database_settings") + ": &e" + plugin.getConfigManager().getDatabaseType(),
+                    "&f▸ " + plugin.getLangManager().getMessage("general.success") + ": &a" + plugin.getLangManager().getMessage("gui.lore.sounds_on"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.items.stats"),
                     "",
-                    "&dDetaylar için tıkla!"
+                    plugin.getLangManager().getMessage("general.click_for_details")
                 )
                 .build(),
             p -> showDatabaseInfo(p)
@@ -85,15 +85,15 @@ public class AdminMenu extends BaseGUI {
 
         // Player Management Section  
         setItem(16, ItemBuilder.create(Material.PLAYER_HEAD)
-                .setName("&e👥 Oyuncu Yönetimi")
+                .setName(plugin.getLangManager().getMessage("gui.admin.player_management"))
                 .setLore(
-                    "&7Online oyuncu yönetimi",
+                    plugin.getLangManager().getMessage("gui.player_mgmt.player_options"),
                     "",
-                    "&f▸ Online oyuncular: &a" + plugin.getServer().getOnlinePlayers().size(),
-                    "&f▸ Oyuncu istatistikleri",
-                    "&f▸ Combo reset işlemleri",
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.items.stats") + ": &a" + plugin.getServer().getOnlinePlayers().size(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.items.stats"),
+                    "&f▸ " + plugin.getLangManager().getMessage("commands.reset_usage"),
                     "",
-                    "&eYönetim paneli!"
+                    plugin.getLangManager().getMessage("gui.player_mgmt.click_to_manage")
                 )
                 .build(),
             p -> plugin.getMenuManager().openMenu(p, new PlayerManagementMenu(plugin, p))
@@ -101,47 +101,47 @@ public class AdminMenu extends BaseGUI {
 
         // System Information
         setItem(28, ItemBuilder.create(Material.BOOK)
-                .setName("&b📊 Sistem Bilgileri")
+                .setName(plugin.getLangManager().getMessage("gui.quick.system_info"))
                 .setLore(
-                    "&7Sunucu ve sistem durumu",
+                    plugin.getLangManager().getMessage("gui.quick.info_desc"),
                     "",
-                    "&f▸ Java Versiyonu: &e" + System.getProperty("java.version"),
-                    "&f▸ Sunucu: &e" + plugin.getServer().getName() + " " + plugin.getServer().getVersion(),
-                    "&f▸ Plugin Klasörü: &7plugins/Combat-Master/",
-                    "&f▸ Bellek Kullanımı: &a" + getMemoryUsage(),
+                    "&f▸ Java Version: &e" + System.getProperty("java.version"),
+                    "&f▸ Server: &e" + plugin.getServer().getName() + " " + plugin.getServer().getVersion(),
+                    "&f▸ Plugin Folder: &7plugins/Combat-Master/",
+                    "&f▸ Memory Usage: &a" + getMemoryUsage(),
                     "",
-                    "&bDetaylı bilgi için tıkla!"
+                    plugin.getLangManager().getMessage("gui.quick.info_action")
                 )
                 .build(),
             p -> showSystemInfo(p)
         );
 
         setItem(30, ItemBuilder.create(Material.COMMAND_BLOCK)
-                .setName("&6⚡ Hızlı Komutlar")
+                .setName(plugin.getLangManager().getMessage("gui.admin.quick_commands"))
                 .setLore(
-                    "&7Sık kullanılan admin komutları",
+                    plugin.getLangManager().getMessage("gui.quick.reset_all_desc"),
                     "",
-                    "&f▸ Tüm combo'ları sıfırla",
-                    "&f▸ Leaderboard'u temizle",  
-                    "&f▸ Cache'i temizle",
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.reset_all_combos"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.leaderboard.no_data"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.memory_cleanup"),
                     "",
-                    "&6Komut menüsü!"
+                    plugin.getLangManager().getMessage("gui.quick.info_action")
                 )
                 .build(),
             p -> plugin.getMenuManager().openMenu(p, new QuickCommandsMenu(plugin, p))
         );
 
         setItem(32, ItemBuilder.create(Material.WRITABLE_BOOK)
-                .setName("&c📝 Config Düzenleyici")
+                .setName(plugin.getLangManager().getMessage("gui.admin.config_editor"))
                 .setLore(
-                    "&7Config ayarlarını görüntüle",
+                    plugin.getLangManager().getMessage("gui.settings.visual_settings"),
                     "",
-                    "&f▸ Mevcut config değerleri",
-                    "&f▸ Dil ayarları",
-                    "&f▸ Database ayarları",
-                    "&f▸ Combat ayarları", 
+                    "&f▸ " + plugin.getLangManager().getMessage("system.config_reloaded"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.language_settings"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.database_settings"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.combat_settings"),
                     "",
-                    "&cConfig bilgileri!"
+                    plugin.getLangManager().getMessage("general.click_for_details")
                 )
                 .build(),
             p -> showConfigInfo(p)
@@ -171,7 +171,7 @@ public class AdminMenu extends BaseGUI {
             p -> {
                 refresh();
                 playSuccessSound();
-                p.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ Admin panel güncellendi!"));
+                p.sendMessage(plugin.getLangManager().getMessage("gui.admin.reload_success"));
             }
         );
 

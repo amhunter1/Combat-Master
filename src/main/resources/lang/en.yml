@@ -29,6 +29,89 @@ gui:
     not_ranked: "&7🎯 Not Ranked"
     settings_updated: "&a✓ Settings menu updated!"
     
+  # Admin Menu
+  admin:
+    plugin_management: "&c🔄 Plugin Management"
+    database_management: "&d⚙️ Database Management"
+    player_management: "&e👥 Player Management"
+    quick_commands: "&6⚡ Quick Commands"
+    config_editor: "&c📝 Config Editor"
+    plugin_info_title: "&b ℹ️ Plugin Information"
+    reload_plugin: "&a🔄 Reload Plugin"
+    reload_description: "&7Reload the plugin"
+    reload_warning: "&c⚠️ Warning: All menus will be closed!"
+    reload_action: "&aReload!"
+    reload_success: "&a✓ Admin panel updated!"
+    reload_error: "&cReload error: {}"
+    
+  # Quick Commands Menu
+  quick:
+    title: "&6⚡ Quick Admin Commands"
+    reset_all_combos: "&c💥 Reset All Combos"
+    close_all_menus: "&c🚫 Close All Menus"
+    save_all_data: "&b💾 Save All Data"
+    system_info: "&e📊 System Information"
+    emergency_stop: "&4⚠️ Emergency Stop"
+    memory_cleanup: "&a🧹 Memory Cleanup"
+    reset_all_desc: "&7Reset all online players' combos"
+    reset_warning: "&c⚠️ WARNING: This action cannot be undone!"
+    reset_action: "&cReset!"
+    close_all_desc: "&7Close all players' open menus"
+    close_action: "&cClose!"
+    save_all_desc: "&7Save all player data to database"
+    reload_all_desc: "&7Completely reload the plugin"
+    reload_all_action: "&aReload!"
+    info_desc: "&7Detailed server and plugin statistics"
+    info_action: "&dDetailed info!"
+    stop_desc: "&7Safely stop the plugin"
+    stop_warning: "&4⚠️ Plugin will be disabled!"
+    stop_action: "&4Stop Plugin!"
+    cleanup_desc: "&7Reduces memory usage and improves performance"
+    cleanup_action: "&aCleanup!"
+    
+  # Player Management Menu
+  player_mgmt:
+    title: "&c👥 Player Management"
+    player_options: "&7Player management options"
+    click_to_manage: "&aClick to manage!"
+    reset_all_player_combos: "&c💥 Reset All Player Combos"
+    reset_all_player_desc: "&7Reset all players' combos"
+    reset_all_player_warning: "&c⚠️ WARNING: All active combos will be deleted!"
+    reset_all_player_action: "&cClick to reset!"
+    global_stats: "&e📊 Global Statistics"
+    global_stats_desc: "&7All players' general statistics"
+    global_stats_action: "&dClick for details!"
+    close_all_player_menus: "&c🚫 Close All Menus"
+    close_all_player_desc: "&7Close all players' open menus"
+    close_all_player_action: "&cClick to close!"
+    player_list_updated: "&a✓ Player list updated!"
+    management_options: "&e&l👤 {} Management Options"
+    detailed_stats: "&f📊 &7Detailed Statistics:"
+    return_to_menu: "&7You can return to menu by typing &e/combatmaster gui&7."
+    
+  # Leaderboard Messages Extended
+  leaderboard_extended:
+    no_data_desc1: "&7Make your first combos to"
+    no_data_desc2: "&7join the leaderboard!"
+    current_player: "&e⭐ This is you!"
+    click_for_details: "&7Click to see details"
+    previous_page: "&aPrevious page"
+    page_info: "&fShowing &e{} &fplayers per page"
+    your_ranking: "&e🎯 Your Ranking"
+    ranking_desc: "&7Your ranking position"
+    ranking_success: "&aCongratulations! You made it to the leaderboard."
+    not_ranked: "&7🎯 Not Ranked"
+    not_ranked_desc: "&7You haven't made it to the leaderboard yet"
+    make_first_combo: "&f▸ Make your first combo"
+    join_leaderboard: "&f▸ Join the leaderboard"
+    compete_with_others: "&f▸ Compete with other players"
+    good_luck: "&eGood luck!"
+    
+  # Stats Menu Extended
+  stats_extended:
+    combat_experience: "&7Indicator of your combat experience"
+    join_ranking: "&7Make your first combo to join the ranking!"
+    
   # GUI Item Names
   items:
     stats: "&e⚡ My Statistics"
@@ -111,6 +194,21 @@ system:
   menu_error: "&cError occurred in menu operation!"
   stats_updated: "&a✓ Statistics updated!"
   config_error: "&cError occurred while reloading plugin: {}"
+  quick_menu_updated: "&a✓ Quick command menu updated!"
+  combo_reset_broadcast: "&c⚡ &lAll combos have been reset by an administrator!"
+  combos_reset_success: "&a✓ {} player combos have been reset!"
+  menus_closed_success: "&a✓ {} menus have been closed!"
+  plugin_reloaded: "&a✓ Plugin successfully reloaded!"
+  reload_error: "&c✗ Plugin reload error: {}"
+  data_saved: "&a✓ All player data saved to database!"
+  data_saved_details: "&7Affected players: &e{}"
+  cache_cleaned: "&a✓ Cache cleaned and memory optimized!"
+  gc_executed: "&7JVM Garbage Collection executed."
+  emergency_stop_warning: "&4⚠️ EMERGENCY STOP STARTING..."
+  emergency_stop_countdown: "&c5 seconds until plugin is disabled!"
+  emergency_stop_broadcast: "&4&l⚠️ WARNING: Combat-Master plugin in emergency stop mode!"
+  emergency_stop_broadcast_countdown: "&cPlugin will be disabled in 5 seconds!"
+  emergency_stop_complete: "&4Combat-Master plugin safely stopped!"
   
 # Combat Levels
 levels:

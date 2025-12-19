@@ -29,6 +29,89 @@ gui:
     not_ranked: "&7🎯 Sıralama Dışı"
     settings_updated: "&a✓ Ayarlar menüsü güncellendi!"
     
+  # Admin Menu
+  admin:
+    plugin_management: "&c🔄 Plugin Yönetimi"
+    database_management: "&d⚙️ Database Yönetimi"
+    player_management: "&e👥 Oyuncu Yönetimi"
+    quick_commands: "&6⚡ Hızlı Komutlar"
+    config_editor: "&c📝 Config Düzenleyici"
+    plugin_info_title: "&b ℹ️ Plugin Bilgileri"
+    reload_plugin: "&a🔄 Plugin Yeniden Yükle"
+    reload_description: "&7Plugini yeniden yükle"
+    reload_warning: "&c⚠️ Dikkat: Tüm menüler kapanacak!"
+    reload_action: "&aYeniden yükle!"
+    reload_success: "&a✓ Admin panel güncellendi!"
+    reload_error: "&cReload hatası: {}"
+    
+  # Quick Commands Menu
+  quick:
+    title: "&6⚡ Hızlı Admin Komutları"
+    reset_all_combos: "&c💥 Tüm Combo'ları Sıfırla"
+    close_all_menus: "&c🚫 Tüm Menüleri Kapat"
+    save_all_data: "&b💾 Tüm Verileri Kaydet"
+    system_info: "&e📊 Sistem Bilgileri"
+    emergency_stop: "&4⚠️ Acil Durdurma"
+    memory_cleanup: "&a🧹 Bellek Temizliği"
+    reset_all_desc: "&7Tüm online oyuncuların combo'larını sıfırla"
+    reset_warning: "&c⚠️ DİKKAT: Bu işlem geri alınamaz!"
+    reset_action: "&cSıfırla!"
+    close_all_desc: "&7Tüm oyuncuların açık menülerini kapat"
+    close_action: "&cKapat!"
+    save_all_desc: "&7Tüm oyuncu verilerini database'e kaydet"
+    reload_all_desc: "&7Plugini tamamen yeniden yükle"
+    reload_all_action: "&aYeniden Yükle!"
+    info_desc: "&7Detaylı sunucu ve plugin istatistikleri"
+    info_action: "&dDetaylı bilgi!"
+    stop_desc: "&7Plugini güvenli şekilde durdur"
+    stop_warning: "&4⚠️ Plugin devre dışı kalacak!"
+    stop_action: "&4Plugini Durdur!"
+    cleanup_desc: "&7Bellek kullanımını azaltır ve performansı artırır"
+    cleanup_action: "&aTemizle!"
+    
+  # Player Management Menu
+  player_mgmt:
+    title: "&c👥 Oyuncu Yönetimi"
+    player_options: "&7Oyuncu yönetim seçenekleri"
+    click_to_manage: "&aYönetim için tıkla!"
+    reset_all_player_combos: "&c💥 Tüm Combo'ları Sıfırla"
+    reset_all_player_desc: "&7Tüm oyuncuların combo'larını sıfırla"
+    reset_all_player_warning: "&c⚠️ DİKKAT: Tüm aktif combo'lar silinecek!"
+    reset_all_player_action: "&cSıfırlama için tıkla!"
+    global_stats: "&e📊 Genel İstatistikler"
+    global_stats_desc: "&7Tüm oyuncuların genel istatistikleri"
+    global_stats_action: "&dDetaylar için tıkla!"
+    close_all_player_menus: "&c🚫 Tüm Menüleri Kapat"
+    close_all_player_desc: "&7Tüm oyuncuların açık menülerini kapat"
+    close_all_player_action: "&cKapatma için tıkla!"
+    player_list_updated: "&a✓ Oyuncu listesi güncellendi!"
+    management_options: "&e&l👤 {} Yönetim Seçenekleri"
+    detailed_stats: "&f📊 &7Detaylı İstatistikler:"
+    return_to_menu: "&7Menüye dönmek için &e/combatmaster gui &7yazabilirsiniz."
+    
+  # Leaderboard Messages Extended
+  leaderboard_extended:
+    no_data_desc1: "&7İlk combo'ları yaparak"
+    no_data_desc2: "&7sıralamaya katılın!"
+    current_player: "&e⭐ Bu sizsiniz!"
+    click_for_details: "&7Detayları görün"
+    previous_page: "&aÖnceki sayfaya git"
+    page_info: "&fSayfa başına &e{} &foyuncu gösteriliyor"
+    your_ranking: "&e🎯 Sizin Sıralamanız"
+    ranking_desc: "&7Sıralama pozisyonunuz"
+    ranking_success: "&aTebrikler! Sıralamaya girdiniz."
+    not_ranked: "&7🎯 Sıralama Dışı"
+    not_ranked_desc: "&7Henüz sıralamaya giremediniz"
+    make_first_combo: "&f▸ İlk combo'nuzu yapın"
+    join_leaderboard: "&f▸ Sıralamaya katılın"
+    compete_with_others: "&f▸ Diğer oyuncularla yarışın"
+    good_luck: "&eİyi şanslar!"
+    
+  # Stats Menu Extended
+  stats_extended:
+    combat_experience: "&7Combat deneyiminizin göstergesi"
+    join_ranking: "&7İlk combo'nuzu yaparak sıralamaya girin!"
+    
   # GUI Item İsimleri
   items:
     stats: "&e⚡ İstatistiklerim"
@@ -111,6 +194,21 @@ system:
   menu_error: "&cMenü işleminde hata oluştu!"
   stats_updated: "&a✓ İstatistikler güncellendi!"
   config_error: "&cPlugin yeniden yüklenirken hata oluştu: {}"
+  quick_menu_updated: "&a✓ Hızlı komut menüsü güncellendi!"
+  combo_reset_broadcast: "&c⚡ &lTüm combo'lar bir yönetici tarafından sıfırlandı!"
+  combos_reset_success: "&a✓ {} oyuncunun combo'su sıfırlandı!"
+  menus_closed_success: "&a✓ {} adet menü kapatıldı!"
+  plugin_reloaded: "&a✓ Plugin başarıyla yeniden yüklendi!"
+  reload_error: "&c✗ Plugin reload hatası: {}"
+  data_saved: "&a✓ Tüm oyuncu verileri database'e kaydedildi!"
+  data_saved_details: "&7Etkilenen oyuncu sayısı: &e{}"
+  cache_cleaned: "&a✓ Cache temizlendi ve bellek optimize edildi!"
+  gc_executed: "&7JVM Garbage Collection çalıştırıldı."
+  emergency_stop_warning: "&4⚠️ ACIL DURDURMA BAŞLATILIYOR..."
+  emergency_stop_countdown: "&c5 saniye içinde plugin devre dışı kalacak!"
+  emergency_stop_broadcast: "&4&l⚠️ UYARI: Combat-Master plugin acil durdurma modunda!"
+  emergency_stop_broadcast_countdown: "&cPlugin 5 saniye içinde devre dışı kalacak!"
+  emergency_stop_complete: "&4Combat-Master plugin güvenli şekilde durduruldu!"
   
 # Combat Seviyeleri
 levels:

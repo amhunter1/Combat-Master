@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class PlayerManagementMenu extends BaseGUI {
 
     public PlayerManagementMenu(CombatMaster plugin, Player player) {
-        super(plugin, player, "&c👥 Oyuncu Yönetimi", 54);
+        super(plugin, player, plugin.getLangManager().getMessage("gui.player_mgmt.title"), 54);
     }
 
     @Override
@@ -40,15 +40,15 @@ public class PlayerManagementMenu extends BaseGUI {
             setItem(slot, ItemBuilder.create(headMaterial)
                     .setName("&e" + onlinePlayer.getName())
                     .setLore(
-                        "&7Oyuncu yönetim seçenekleri",
+                        plugin.getLangManager().getMessage("gui.player_mgmt.player_options"),
                         "",
-                        "&f▸ Mevcut Combo: " + (hasActiveCombo ? "&a" + currentCombo : "&7Yok"),
-                        "&f▸ En İyi Combo: &6" + bestCombo,
-                        "&f▸ Toplam Hit: &e" + totalHits,
-                        "&f▸ Dünya: &7" + onlinePlayer.getWorld().getName(),
-                        "&f▸ Sağlık: &c" + Math.round(onlinePlayer.getHealth()) + "/20",
+                        "&f▸ " + plugin.getLangManager().getMessage("gui.items.current_combo") + ": " + (hasActiveCombo ? "&a" + currentCombo : "&7" + plugin.getLangManager().getMessage("gui.leaderboard.no_data")),
+                        "&f▸ " + plugin.getLangManager().getMessage("gui.items.best_combo") + ": &6" + bestCombo,
+                        "&f▸ " + plugin.getLangManager().getMessage("gui.items.total_hits") + ": &e" + totalHits,
+                        "&f▸ World: &7" + onlinePlayer.getWorld().getName(),
+                        "&f▸ Health: &c" + Math.round(onlinePlayer.getHealth()) + "/20",
                         "",
-                        "&aYönetim için tıkla!"
+                        plugin.getLangManager().getMessage("gui.player_mgmt.click_to_manage")
                     )
                     .setGlowing(hasActiveCombo)
                     .build(),
@@ -62,51 +62,51 @@ public class PlayerManagementMenu extends BaseGUI {
 
         // Management Tools
         setItem(45, ItemBuilder.create(Material.TNT)
-                .setName("&c💥 Tüm Combo'ları Sıfırla")
+                .setName(plugin.getLangManager().getMessage("gui.player_mgmt.reset_all_player_combos"))
                 .setLore(
-                    "&7Tüm oyuncuların combo'larını sıfırla",
+                    plugin.getLangManager().getMessage("gui.player_mgmt.reset_all_player_desc"),
                     "",
-                    "&f▸ Online oyuncular: &e" + plugin.getServer().getOnlinePlayers().size(),
-                    "&f▸ Bu işlem geri alınamaz!",
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.items.stats") + ": &e" + plugin.getServer().getOnlinePlayers().size(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.reset_warning"),
                     "",
-                    "&c⚠️ DİKKAT: Tüm aktif combo'lar silinecek!",
+                    plugin.getLangManager().getMessage("gui.player_mgmt.reset_all_player_warning"),
                     "",
-                    "&cSıfırlama için tıkla!"
+                    plugin.getLangManager().getMessage("gui.player_mgmt.reset_all_player_action")
                 )
                 .build(),
             p -> resetAllCombos(p)
         );
 
         setItem(46, ItemBuilder.create(Material.CLOCK)
-                .setName("&d📊 Toplu İstatistik")
+                .setName(plugin.getLangManager().getMessage("gui.player_mgmt.global_stats"))
                 .setLore(
-                    "&7Tüm oyuncuların genel istatistikleri",
+                    plugin.getLangManager().getMessage("gui.player_mgmt.global_stats_desc"),
                     "",
                     "&f▸ Online: &a" + plugin.getServer().getOnlinePlayers().size(),
-                    "&f▸ Aktif Combo Sayısı: &e" + getActiveCombosCount(),
-                    "&f▸ Toplam Hit (Online): &b" + getTotalHitsOnline(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.items.current_combo") + ": &e" + getActiveCombosCount(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.items.total_hits") + " (Online): &b" + getTotalHitsOnline(),
                     "",
-                    "&dDetaylar için tıkla!"
+                    plugin.getLangManager().getMessage("gui.player_mgmt.global_stats_action")
                 )
                 .build(),
             p -> showBulkStats(p)
         );
 
         setItem(47, ItemBuilder.create(Material.BARRIER)
-                .setName("&c🚫 Tüm Menüleri Kapat")
+                .setName(plugin.getLangManager().getMessage("gui.player_mgmt.close_all_player_menus"))
                 .setLore(
-                    "&7Tüm oyuncuların açık menülerini kapat",
+                    plugin.getLangManager().getMessage("gui.player_mgmt.close_all_player_desc"),
                     "",
-                    "&f▸ Açık menü sayısı: &e" + plugin.getMenuManager().getOpenMenuCount(),
-                    "&f▸ Bu işlem tüm GUI'ları kapatacak",
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.page_info") + ": &e" + plugin.getMenuManager().getOpenMenuCount(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.player_mgmt.close_all_player_desc"),
                     "",
-                    "&cKapatma için tıkla!"
+                    plugin.getLangManager().getMessage("gui.player_mgmt.close_all_player_action")
                 )
                 .build(),
             p -> {
                 int closedCount = plugin.getMenuManager().getOpenMenuCount();
                 plugin.getMenuManager().closeAllMenus();
-                p.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ " + closedCount + " adet menü kapatıldı!"));
+                p.sendMessage(plugin.getLangManager().getMessage("system.menus_closed_success", closedCount));
                 playSuccessSound();
                 refresh();
             }
@@ -121,7 +121,7 @@ public class PlayerManagementMenu extends BaseGUI {
             p -> {
                 refresh();
                 playSuccessSound();
-                p.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ Oyuncu listesi güncellendi!"));
+                p.sendMessage(plugin.getLangManager().getMessage("gui.player_mgmt.player_list_updated"));
             }
         );
     }
@@ -130,24 +130,24 @@ public class PlayerManagementMenu extends BaseGUI {
         admin.closeInventory();
         
         admin.sendMessage("");
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e&l👤 " + target.getName() + " Yönetim Seçenekleri"));
+        admin.sendMessage(plugin.getLangManager().getMessage("gui.player_mgmt.management_options", target.getName()));
         admin.sendMessage("");
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a1. &f/combatmaster reset " + target.getName() + " &7- Combo'sunu sıfırla"));
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a2. &f/combatmaster stats " + target.getName() + " &7- İstatistikleri göster"));
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a3. &f/tp " + target.getName() + " &7- Oyuncuya ışınlan"));
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a4. &f/tp " + admin.getName() + " " + target.getName() + " &7- Oyuncuyu yanına çek"));
+        admin.sendMessage("&a1. &f/combatmaster reset " + target.getName() + " &7- " + plugin.getLangManager().getMessage("commands.reset_usage"));
+        admin.sendMessage("&a2. &f/combatmaster stats " + target.getName() + " &7- " + plugin.getLangManager().getMessage("commands.stats_usage"));
+        admin.sendMessage("&a3. &f/tp " + target.getName() + " &7- Teleport to player");
+        admin.sendMessage("&a4. &f/tp " + admin.getName() + " " + target.getName() + " &7- Teleport player to you");
         admin.sendMessage("");
         
         CombatManager.CombatData playerData = plugin.getCombatManager().getPlayerData(target.getUniqueId());
         if (playerData != null) {
-            admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f📊 &7Detaylı İstatistikler:"));
-            admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ Mevcut Combo: &e" + playerData.getCurrentCombo()));
-            admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ En İyi Combo: &6" + playerData.getBestCombo()));
-            admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ Toplam Hit: &b" + playerData.getTotalHits()));
+            admin.sendMessage(plugin.getLangManager().getMessage("gui.player_mgmt.detailed_stats"));
+            admin.sendMessage("&f▸ " + plugin.getLangManager().getMessage("gui.items.current_combo") + ": &e" + playerData.getCurrentCombo());
+            admin.sendMessage("&f▸ " + plugin.getLangManager().getMessage("gui.items.best_combo") + ": &6" + playerData.getBestCombo());
+            admin.sendMessage("&f▸ " + plugin.getLangManager().getMessage("gui.items.total_hits") + ": &b" + playerData.getTotalHits());
         }
         
         admin.sendMessage("");
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&7Menüye dönmek için &e/combatmaster gui &7yazabilirsiniz."));
+        admin.sendMessage(plugin.getLangManager().getMessage("gui.player_mgmt.return_to_menu"));
         admin.sendMessage("");
         
         playSuccessSound();
@@ -163,8 +163,8 @@ public class PlayerManagementMenu extends BaseGUI {
             }
         }
         
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ " + resetCount + " oyuncunun combo'su sıfırlandı!"));
-        plugin.getServer().broadcastMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&c⚡ Tüm combo'lar bir yönetici tarafından sıfırlandı!"));
+        admin.sendMessage(plugin.getLangManager().getMessage("system.combos_reset_success", resetCount));
+        plugin.getServer().broadcastMessage(plugin.getLangManager().getMessage("system.combo_reset_broadcast"));
         
         playSuccessSound();
         refresh();
@@ -172,7 +172,7 @@ public class PlayerManagementMenu extends BaseGUI {
 
     private void showBulkStats(Player admin) {
         admin.sendMessage("");
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&d&l📊 Toplu Oyuncu İstatistikleri"));
+        admin.sendMessage(plugin.getLangManager().getMessage("gui.player_mgmt.global_stats"));
         admin.sendMessage("");
         
         int onlineCount = plugin.getServer().getOnlinePlayers().size();
@@ -181,15 +181,15 @@ public class PlayerManagementMenu extends BaseGUI {
         int maxCombo = getMaxComboOnline();
         String topPlayer = getTopPlayerOnline();
         
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ Online Oyuncular: &a" + onlineCount));
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ Aktif Combo'lar: &e" + activeCombos));
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ Toplam Hit (Online): &b" + GUIUtils.formatNumber(totalHits)));
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ En Yüksek Combo: &6" + maxCombo));
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ En İyi Oyuncu: &e" + (topPlayer != null ? topPlayer : "Yok")));
+        admin.sendMessage("&f▸ Online Players: &a" + onlineCount);
+        admin.sendMessage("&f▸ " + plugin.getLangManager().getMessage("gui.items.current_combo") + ": &e" + activeCombos);
+        admin.sendMessage("&f▸ " + plugin.getLangManager().getMessage("gui.items.total_hits") + " (Online): &b" + GUIUtils.formatNumber(totalHits));
+        admin.sendMessage("&f▸ " + plugin.getLangManager().getMessage("gui.items.best_combo") + ": &6" + maxCombo);
+        admin.sendMessage("&f▸ Top Player: &e" + (topPlayer != null ? topPlayer : plugin.getLangManager().getMessage("gui.leaderboard.no_data")));
         admin.sendMessage("");
         
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&7Bu istatistikler sadece online oyuncuları kapsamaktadır."));
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&7Tam istatistikler için database'e bakınız."));
+        admin.sendMessage("&7These statistics only include online players.");
+        admin.sendMessage("&7For complete statistics, check the database.");
         admin.sendMessage("");
         
         playSuccessSound();

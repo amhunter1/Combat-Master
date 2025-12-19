@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class QuickCommandsMenu extends BaseGUI {
 
     public QuickCommandsMenu(CombatMaster plugin, Player player) {
-        super(plugin, player, "&6⚡ Hızlı Admin Komutları", 36);
+        super(plugin, player, plugin.getLangManager().getMessage("gui.quick.title"), 36);
     }
 
     @Override
@@ -26,17 +26,17 @@ public class QuickCommandsMenu extends BaseGUI {
 
         // Reset All Combos
         setItem(10, ItemBuilder.create(Material.TNT)
-                .setName("&c💥 Tüm Combo'ları Sıfırla")
+                .setName(plugin.getLangManager().getMessage("gui.quick.reset_all_combos"))
                 .setLore(
-                    "&7Tüm online oyuncuların combo'larını sıfırla",
+                    plugin.getLangManager().getMessage("gui.quick.reset_all_desc"),
                     "",
-                    "&f▸ Etkilenecek oyuncu: &e" + getActiveCombosCount() + " / " + plugin.getServer().getOnlinePlayers().size(),
-                    "&f▸ Bu işlem geri alınamaz!",
-                    "&f▸ Tüm aktif combo'lar kaybolacak",
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.player_mgmt.player_options") + ": &e" + getActiveCombosCount() + " / " + plugin.getServer().getOnlinePlayers().size(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.reset_warning"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.player_mgmt.reset_all_player_warning"),
                     "",
-                    "&c⚠️ DİKKAT: Bu işlem geri alınamaz!",
+                    plugin.getLangManager().getMessage("gui.quick.reset_warning"),
                     "",
-                    "&cSıfırla!"
+                    plugin.getLangManager().getMessage("gui.quick.reset_action")
                 )
                 .setGlowing(true)
                 .build(),
@@ -45,15 +45,15 @@ public class QuickCommandsMenu extends BaseGUI {
 
         // Close All Menus
         setItem(12, ItemBuilder.create(Material.BARRIER)
-                .setName("&c🚫 Tüm Menüleri Kapat")
+                .setName(plugin.getLangManager().getMessage("gui.quick.close_all_menus"))
                 .setLore(
-                    "&7Tüm oyuncuların açık menülerini kapat",
+                    plugin.getLangManager().getMessage("gui.quick.close_all_desc"),
                     "",
-                    "&f▸ Açık menü sayısı: &e" + plugin.getMenuManager().getOpenMenuCount(),
-                    "&f▸ Bellek kullanımını azaltır",
-                    "&f▸ Performansı artırır",
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.page_info") + ": &e" + plugin.getMenuManager().getOpenMenuCount(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.cleanup_desc"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.cleanup_desc"),
                     "",
-                    "&cKapat!"
+                    plugin.getLangManager().getMessage("gui.quick.close_action")
                 )
                 .build(),
             p -> executeCloseAllMenus(p)
@@ -61,18 +61,18 @@ public class QuickCommandsMenu extends BaseGUI {
 
         // Reload Plugin
         setItem(14, ItemBuilder.create(Material.REPEATER)
-                .setName("&a♻️ Plugin Reload")
+                .setName(plugin.getLangManager().getMessage("gui.admin.reload_plugin"))
                 .setLore(
-                    "&7Plugini tamamen yeniden yükle",
+                    plugin.getLangManager().getMessage("gui.quick.reload_all_desc"),
                     "",
-                    "&f▸ Config dosyalarını yenile",
-                    "&f▸ Dil dosyalarını yenile",
-                    "&f▸ Tüm ayarları güncelle",
-                    "&f▸ Menüleri kapat",
+                    "&f▸ " + plugin.getLangManager().getMessage("system.config_reloaded"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.language_settings"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.settings_updated"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.close_all_menus"),
                     "",
-                    "&c⚠️ Tüm menüler kapanacak!",
+                    plugin.getLangManager().getMessage("gui.admin.reload_warning"),
                     "",
-                    "&aYeniden Yükle!"
+                    plugin.getLangManager().getMessage("gui.quick.reload_all_action")
                 )
                 .build(),
             p -> executePluginReload(p)
@@ -80,16 +80,16 @@ public class QuickCommandsMenu extends BaseGUI {
 
         // Save All Data
         setItem(16, ItemBuilder.create(Material.CHEST)
-                .setName("&b💾 Tüm Verileri Kaydet")
+                .setName(plugin.getLangManager().getMessage("gui.quick.save_all_data"))
                 .setLore(
-                    "&7Tüm oyuncu verilerini database'e kaydet",
+                    plugin.getLangManager().getMessage("gui.quick.save_all_desc"),
                     "",
-                    "&f▸ Online oyuncular: &e" + plugin.getServer().getOnlinePlayers().size(),
-                    "&f▸ Bellek temizliği yapar",
-                    "&f▸ Veri kaybını önler",
-                    "&f▸ Güvenli kapatma öncesi önerilir",
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.items.stats") + ": &e" + plugin.getServer().getOnlinePlayers().size(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.cleanup_desc"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.cleanup_desc"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.cleanup_desc"),
                     "",
-                    "&bKaydet!"
+                    plugin.getLangManager().getMessage("general.success")
                 )
                 .build(),
             p -> executeSaveAllData(p)
@@ -97,16 +97,16 @@ public class QuickCommandsMenu extends BaseGUI {
 
         // Show Server Stats
         setItem(20, ItemBuilder.create(Material.BOOK)
-                .setName("&d📊 Sunucu İstatistikleri")
+                .setName(plugin.getLangManager().getMessage("gui.quick.system_info"))
                 .setLore(
-                    "&7Detaylı sunucu ve plugin istatistikleri",
+                    plugin.getLangManager().getMessage("gui.quick.info_desc"),
                     "",
                     "&f▸ Online: &a" + plugin.getServer().getOnlinePlayers().size(),
-                    "&f▸ Aktif Combo'lar: &e" + getActiveCombosCount(),
-                    "&f▸ Açık Menüler: &e" + plugin.getMenuManager().getOpenMenuCount(),
-                    "&f▸ Bellek: &e" + getMemoryUsage(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.items.current_combo") + ": &e" + getActiveCombosCount(),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.settings.page_info") + ": &e" + plugin.getMenuManager().getOpenMenuCount(),
+                    "&f▸ Memory: &e" + getMemoryUsage(),
                     "",
-                    "&dDetaylı bilgi!"
+                    plugin.getLangManager().getMessage("gui.quick.info_action")
                 )
                 .build(),
             p -> executeShowServerStats(p)
@@ -114,19 +114,19 @@ public class QuickCommandsMenu extends BaseGUI {
 
         // Emergency Stop
         setItem(22, ItemBuilder.create(Material.REDSTONE_BLOCK)
-                .setName("&4🚨 Acil Durdurma")
+                .setName(plugin.getLangManager().getMessage("gui.quick.emergency_stop"))
                 .setLore(
-                    "&7Plugin'i güvenli şekilde durdur",
+                    plugin.getLangManager().getMessage("gui.quick.stop_desc"),
                     "",
-                    "&f▸ Tüm verileri kaydet",
-                    "&f▸ Menüleri kapat", 
-                    "&f▸ Bağlantıları sonlandır",
-                    "&f▸ Belleği temizle",
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.save_all_data"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.close_all_menus"),
+                    "&f▸ " + plugin.getLangManager().getMessage("system.plugin_disabled"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.memory_cleanup"),
                     "",
-                    "&4⚠️ Plugin devre dışı kalacak!",
-                    "&4⚠️ Sunucu yöneticisi gerekli!",
+                    plugin.getLangManager().getMessage("gui.quick.stop_warning"),
+                    plugin.getLangManager().getMessage("gui.quick.stop_warning"),
                     "",
-                    "&4Acil Durdur!"
+                    plugin.getLangManager().getMessage("gui.quick.stop_action")
                 )
                 .build(),
             p -> executeEmergencyStop(p)
@@ -134,16 +134,16 @@ public class QuickCommandsMenu extends BaseGUI {
 
         // Clear Cache
         setItem(24, ItemBuilder.create(Material.SPONGE)
-                .setName("&e🧽 Cache Temizle")
+                .setName(plugin.getLangManager().getMessage("gui.quick.memory_cleanup"))
                 .setLore(
-                    "&7Bellek cache'ini temizle",
+                    plugin.getLangManager().getMessage("gui.quick.cleanup_desc"),
                     "",
-                    "&f▸ Bellek kullanımını azaltır",
-                    "&f▸ Performansı artırır",
-                    "&f▸ Eski verileri temizler",
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.cleanup_desc"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.cleanup_desc"),
+                    "&f▸ " + plugin.getLangManager().getMessage("gui.quick.cleanup_desc"),
                     "&f▸ JVM Garbage Collection",
                     "",
-                    "&eTemizle!"
+                    plugin.getLangManager().getMessage("gui.quick.cleanup_action")
                 )
                 .build(),
             p -> executeClearCache(p)
@@ -158,7 +158,7 @@ public class QuickCommandsMenu extends BaseGUI {
             p -> {
                 refresh();
                 playSuccessSound();
-                p.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ Hızlı komut menüsü güncellendi!"));
+                p.sendMessage(plugin.getLangManager().getMessage("system.quick_menu_updated"));
             }
         );
 
@@ -180,8 +180,8 @@ public class QuickCommandsMenu extends BaseGUI {
             }
         }
         
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ " + resetCount + " oyuncunun combo'su sıfırlandı!"));
-        plugin.getServer().broadcastMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&c⚡ &lTüm combo'lar bir yönetici tarafından sıfırlandı!"));
+        admin.sendMessage(plugin.getLangManager().getMessage("system.combos_reset_success", resetCount));
+        plugin.getServer().broadcastMessage(plugin.getLangManager().getMessage("system.combo_reset_broadcast"));
         
         plugin.getLogger().info(admin.getName() + " tarafından tüm combo'lar sıfırlandı.");
         playSuccessSound();
@@ -192,7 +192,7 @@ public class QuickCommandsMenu extends BaseGUI {
         int closedCount = plugin.getMenuManager().getOpenMenuCount();
         plugin.getMenuManager().closeAllMenus();
         
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ " + closedCount + " adet menü kapatıldı!"));
+        admin.sendMessage(plugin.getLangManager().getMessage("system.menus_closed_success", closedCount));
         plugin.getLogger().info(admin.getName() + " tarafından tüm menüler kapatıldı.");
         
         playSuccessSound();
@@ -208,11 +208,11 @@ public class QuickCommandsMenu extends BaseGUI {
         
         try {
             plugin.reloadPlugin();
-            admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ Plugin başarıyla yeniden yüklendi!"));
+            admin.sendMessage(plugin.getLangManager().getMessage("system.plugin_reloaded"));
             plugin.getLogger().info(admin.getName() + " tarafından plugin reload edildi.");
             playSuccessSound();
         } catch (Exception e) {
-            admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&c✗ Plugin reload hatası: " + e.getMessage()));
+            admin.sendMessage(plugin.getLangManager().getMessage("system.reload_error", e.getMessage()));
             plugin.getLogger().severe("Plugin reload hatası: " + e.getMessage());
             playErrorSound();
         }
@@ -221,8 +221,8 @@ public class QuickCommandsMenu extends BaseGUI {
     private void executeSaveAllData(Player admin) {
         plugin.getCombatManager().saveAllData();
         
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ Tüm oyuncu verileri database'e kaydedildi!"));
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&7Etkilenen oyuncu sayısı: &e" + plugin.getServer().getOnlinePlayers().size()));
+        admin.sendMessage(plugin.getLangManager().getMessage("system.data_saved"));
+        admin.sendMessage(plugin.getLangManager().getMessage("system.data_saved_details", plugin.getServer().getOnlinePlayers().size()));
         
         plugin.getLogger().info(admin.getName() + " tarafından tüm veriler kaydedildi.");
         playSuccessSound();
@@ -256,11 +256,11 @@ public class QuickCommandsMenu extends BaseGUI {
     }
 
     private void executeEmergencyStop(Player admin) {
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&4⚠️ ACIL DURDURMA BAŞLATILIYOR..."));
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&c5 saniye içinde plugin devre dışı kalacak!"));
+        admin.sendMessage(plugin.getLangManager().getMessage("system.emergency_stop_warning"));
+        admin.sendMessage(plugin.getLangManager().getMessage("system.emergency_stop_countdown"));
         
-        plugin.getServer().broadcastMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&4&l⚠️ UYARI: Combat-Master plugin acil durdurma modunda!"));
-        plugin.getServer().broadcastMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&cPlugin 5 saniye içinde devre dışı kalacak!"));
+        plugin.getServer().broadcastMessage(plugin.getLangManager().getMessage("system.emergency_stop_broadcast"));
+        plugin.getServer().broadcastMessage(plugin.getLangManager().getMessage("system.emergency_stop_broadcast_countdown"));
         
         plugin.getLogger().warning("ACIL DURDURMA: " + admin.getName() + " tarafından başlatıldı!");
         
@@ -268,7 +268,7 @@ public class QuickCommandsMenu extends BaseGUI {
             plugin.getCombatManager().saveAllData();
             plugin.getMenuManager().closeAllMenus();
             
-            plugin.getServer().broadcastMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&4Combat-Master plugin güvenli şekilde durduruldu!"));
+            plugin.getServer().broadcastMessage(plugin.getLangManager().getMessage("system.emergency_stop_complete"));
             plugin.getLogger().info("Plugin acil durdurma ile güvenli şekilde kapatıldı.");
             
             plugin.getServer().getPluginManager().disablePlugin(plugin);
@@ -282,8 +282,8 @@ public class QuickCommandsMenu extends BaseGUI {
         // JVM Garbage Collection'ı çalıştır
         System.gc();
         
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ Cache temizlendi ve bellek optimize edildi!"));
-        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&7JVM Garbage Collection çalıştırıldı."));
+        admin.sendMessage(plugin.getLangManager().getMessage("system.cache_cleaned"));
+        admin.sendMessage(plugin.getLangManager().getMessage("system.gc_executed"));
         
         plugin.getLogger().info(admin.getName() + " tarafından cache temizlendi.");
         playSuccessSound();

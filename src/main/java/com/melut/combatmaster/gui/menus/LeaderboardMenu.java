@@ -34,8 +34,8 @@ public class LeaderboardMenu extends BaseGUI {
             setItem(22, ItemBuilder.create(Material.BARRIER)
                     .setName("&c" + plugin.getLangManager().getMessage("gui.leaderboard.no_data"))
                     .setLore(
-                        "&7İlk combo'ları yaparak",
-                        "&7sıralamaya katılın!"
+                        plugin.getLangManager().getMessage("gui.leaderboard_extended.no_data_desc1"),
+                        plugin.getLangManager().getMessage("gui.leaderboard_extended.no_data_desc2")
                     )
                     .build()
             );
@@ -80,7 +80,7 @@ public class LeaderboardMenu extends BaseGUI {
                         "&f▸ " + plugin.getLangManager().getMessage("levels.title", getComboLevelName(entry.getBestCombo())),
                         "&f▸ " + plugin.getLangManager().getMessage("ranks.title", getRankTitle(entry.getRank())),
                         "",
-                        isCurrentPlayer ? "&e⭐ Bu sizsiniz!" : "&7Tıklayarak detayları görün"
+                        isCurrentPlayer ? plugin.getLangManager().getMessage("gui.leaderboard_extended.current_player") : plugin.getLangManager().getMessage("gui.leaderboard_extended.click_for_details")
                     )
                     .setGlowing(isCurrentPlayer || entry.getRank() <= 3)
                     .setAmount(Math.max(1, Math.min(64, entry.getRank())))
@@ -115,8 +115,8 @@ public class LeaderboardMenu extends BaseGUI {
             setItem(45, ItemBuilder.create(Material.ARROW)
                     .setName(plugin.getLangManager().getGUIItem("prev_page"))
                     .setLore(
-                        "&7Sayfa: " + (currentPage) + "/" + totalPages,
-                        "&aÖnceki sayfaya git"
+                        "&7Page: " + (currentPage) + "/" + totalPages,
+                        plugin.getLangManager().getMessage("gui.leaderboard_extended.previous_page")
                     )
                     .build(),
                 p -> plugin.getMenuManager().openMenu(p, new LeaderboardMenu(plugin, p, currentPage - 1))
@@ -127,13 +127,13 @@ public class LeaderboardMenu extends BaseGUI {
 
         // Page info
         setItem(49, ItemBuilder.create(Material.BOOK)
-                .setName("&e📄 Sayfa Bilgisi")
+                .setName(plugin.getLangManager().getMessage("gui.settings.page_info"))
                 .setLore(
-                    "&7Mevcut Sayfa: &e" + (currentPage + 1),
-                    "&7Toplam Sayfa: &e" + totalPages,
-                    "&7Toplam Oyuncu: &e" + (leaderboardData != null ? leaderboardData.size() : 0),
+                    "&7Current Page: &e" + (currentPage + 1),
+                    "&7Total Pages: &e" + totalPages,
+                    "&7Total Players: &e" + (leaderboardData != null ? leaderboardData.size() : 0),
                     "",
-                    "&fSayfa başına &e" + itemsPerPage + " &foyuncu gösteriliyor"
+                    plugin.getLangManager().getMessage("gui.leaderboard_extended.page_info", itemsPerPage)
                 )
                 .build()
         );
@@ -143,8 +143,8 @@ public class LeaderboardMenu extends BaseGUI {
             setItem(53, ItemBuilder.create(Material.ARROW)
                     .setName(plugin.getLangManager().getGUIItem("next_page"))
                     .setLore(
-                        "&7Sayfa: " + (currentPage + 2) + "/" + totalPages,
-                        "&aSonraki sayfaya git"
+                        "&7Page: " + (currentPage + 2) + "/" + totalPages,
+                        "&aNext page"
                     )
                     .build(),
                 p -> plugin.getMenuManager().openMenu(p, new LeaderboardMenu(plugin, p, currentPage + 1))
@@ -187,15 +187,15 @@ public class LeaderboardMenu extends BaseGUI {
         for (DatabaseManager.LeaderboardEntry entry : leaderboardData) {
             if (entry.getPlayerName().equals(player.getName())) {
                 setItem(4, ItemBuilder.create(Material.PLAYER_HEAD)
-                        .setName("&e🎯 Sizin Sıralamanız")
+                        .setName(plugin.getLangManager().getMessage("gui.leaderboard_extended.your_ranking"))
                         .setLore(
-                            "&7Sıralama pozisyonunuz",
+                            plugin.getLangManager().getMessage("gui.leaderboard_extended.ranking_desc"),
                             "",
-                            "&f▸ Sıra: " + getRankColor(entry.getRank()) + "#" + entry.getRank(),
-                            "&f▸ En İyi Combo: &6" + GUIUtils.formatNumber(entry.getBestCombo()),
+                            "&f▸ Rank: " + getRankColor(entry.getRank()) + "#" + entry.getRank(),
+                            "&f▸ " + plugin.getLangManager().getMessage("gui.items.best_combo") + ": &6" + GUIUtils.formatNumber(entry.getBestCombo()),
                             "&f▸ " + getRankTitle(entry.getRank()),
                             "",
-                            "&aTebrikler! Sıralamaya girdiniz."
+                            plugin.getLangManager().getMessage("gui.leaderboard_extended.ranking_success")
                         )
                         .setGlowing(true)
                         .build(),
@@ -213,15 +213,15 @@ public class LeaderboardMenu extends BaseGUI {
 
         // Player not in ranking
         setItem(4, ItemBuilder.create(Material.GRAY_DYE)
-                .setName("&7🎯 Sıralama Dışı")
+                .setName(plugin.getLangManager().getMessage("gui.leaderboard_extended.not_ranked"))
                 .setLore(
-                    "&7Henüz sıralamaya giremediniz",
+                    plugin.getLangManager().getMessage("gui.leaderboard_extended.not_ranked_desc"),
                     "",
-                    "&f▸ İlk combo'nuzu yapın",
-                    "&f▸ Sıralamaya katılın",
-                    "&f▸ Diğer oyuncularla yarışın",
+                    plugin.getLangManager().getMessage("gui.leaderboard_extended.make_first_combo"),
+                    plugin.getLangManager().getMessage("gui.leaderboard_extended.join_leaderboard"),
+                    plugin.getLangManager().getMessage("gui.leaderboard_extended.compete_with_others"),
                     "",
-                    "&eİyi şanslar!"
+                    plugin.getLangManager().getMessage("gui.leaderboard_extended.good_luck")
                 )
                 .build()
         );
