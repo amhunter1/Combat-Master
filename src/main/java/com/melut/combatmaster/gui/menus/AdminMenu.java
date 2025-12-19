@@ -148,16 +148,16 @@ public class AdminMenu extends BaseGUI {
         );
 
         setItem(34, ItemBuilder.create(Material.BEACON)
-                .setName("&a🎯 bStats Durumu")
+                .setName(plugin.getLangManager().getMessage("gui.admin.bstats_title"))
                 .setLore(
-                    "&7Metrics ve istatistik durumu",
+                    plugin.getLangManager().getMessage("gui.admin.bstats_desc"),
                     "",
                     "&f▸ bStats Plugin ID: &e28408",
-                    "&f▸ Veri toplama: &aAktif",
-                    "&f▸ Gizlilik: &7Anonim veriler",
+                    plugin.getLangManager().getMessage("gui.admin.bstats_data_collection"),
+                    plugin.getLangManager().getMessage("gui.admin.bstats_privacy"),
                     "&f▸ URL: &ebstats.org/plugin/bukkit/Combat-Master",
                     "",
-                    "&7İstatistikler otomatik olarak gönderiliyor"
+                    plugin.getLangManager().getMessage("gui.admin.bstats_auto_send")
                 )
                 .build()
         );
@@ -185,35 +185,35 @@ public class AdminMenu extends BaseGUI {
 
     private void showPluginInfo(Player player) {
         player.sendMessage("");
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&6&l⚡ Combat-Master Admin Bilgileri ⚡"));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.plugin_info_header"));
         player.sendMessage("");
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Plugin: &fCombat-Master v" + plugin.getDescription().getVersion()));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Geliştirici: &fMelut"));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ API Versiyonu: &f" + plugin.getDescription().getAPIVersion()));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Dil: &f" + plugin.getLangManager().getCurrentLanguage()));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Açık Menüler: &a" + plugin.getMenuManager().getOpenMenuCount()));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Online Oyuncular: &a" + plugin.getServer().getOnlinePlayers().size()));
+        player.sendMessage("&e▸ Plugin: &fCombat-Master v" + plugin.getDescription().getVersion());
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.developer"));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.api_version", plugin.getDescription().getAPIVersion()));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.language_info", plugin.getLangManager().getCurrentLanguage()));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.open_menus", plugin.getMenuManager().getOpenMenuCount()));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.online_players", plugin.getServer().getOnlinePlayers().size()));
         player.sendMessage("");
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a▸ Discord: &fhttps://discord.com/users/871721944268038175"));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a▸ GitHub: &fhttps://github.com/amhunter1"));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.discord_info"));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.github_info"));
         player.sendMessage("");
         playSuccessSound();
     }
 
     private void showDatabaseInfo(Player player) {
         player.sendMessage("");
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&d&l📊 Database Bilgileri"));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.database_info_header"));
         player.sendMessage("");
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Database Türü: &f" + plugin.getConfigManager().getDatabaseType().toUpperCase()));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.database_type", plugin.getConfigManager().getDatabaseType().toUpperCase()));
         if (plugin.getConfigManager().getDatabaseType().equals("mysql")) {
-            player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Host: &f" + plugin.getConfigManager().getDatabaseHost()));
-            player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Port: &f" + plugin.getConfigManager().getDatabasePort()));
-            player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Database: &f" + plugin.getConfigManager().getDatabaseName()));
+            player.sendMessage(plugin.getLangManager().getMessage("gui.admin.database_host", plugin.getConfigManager().getDatabaseHost()));
+            player.sendMessage(plugin.getLangManager().getMessage("gui.admin.database_port", plugin.getConfigManager().getDatabasePort()));
+            player.sendMessage(plugin.getLangManager().getMessage("gui.admin.database_name", plugin.getConfigManager().getDatabaseName()));
         } else {
-            player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Dosya: &f" + plugin.getConfigManager().getSqliteFileName()));
+            player.sendMessage(plugin.getLangManager().getMessage("gui.admin.database_file", plugin.getConfigManager().getSqliteFileName()));
         }
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Bağlantı: &aAktif"));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Pool Boyutu: &f10 (max)"));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.database_connection"));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.database_pool"));
         player.sendMessage("");
         playSuccessSound();
     }
@@ -226,34 +226,34 @@ public class AdminMenu extends BaseGUI {
         long usedMemory = totalMemory - freeMemory;
 
         player.sendMessage("");
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&b&l📊 Sistem Bilgileri"));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.system_info_header"));
         player.sendMessage("");
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Java Versiyonu: &f" + System.getProperty("java.version")));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ OS: &f" + System.getProperty("os.name")));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Sunucu: &f" + plugin.getServer().getName()));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Versiyon: &f" + plugin.getServer().getVersion()));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Bukkit: &f" + plugin.getServer().getBukkitVersion()));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.java_version", System.getProperty("java.version")));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.os_info", System.getProperty("os.name")));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.server_info", plugin.getServer().getName()));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.server_version", plugin.getServer().getVersion()));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.bukkit_version", plugin.getServer().getBukkitVersion()));
         player.sendMessage("");
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Bellek Kullanımı: &a" + usedMemory + "MB &7/ &e" + maxMemory + "MB"));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Serbest Bellek: &a" + freeMemory + "MB"));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ CPU Çekirdekleri: &f" + runtime.availableProcessors()));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.memory_usage", usedMemory, maxMemory));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.free_memory", freeMemory));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.cpu_cores", runtime.availableProcessors()));
         player.sendMessage("");
         playSuccessSound();
     }
 
     private void showConfigInfo(Player player) {
         player.sendMessage("");
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&c&l📝 Config Bilgileri"));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.config_info_header"));
         player.sendMessage("");
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Dil: &f" + plugin.getLangManager().getCurrentLanguage()));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Sesler: &f" + (plugin.getConfigManager().isSoundsEnabled() ? "&aAktif" : "&cKapalı")));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Action Bar: &f" + (plugin.getConfigManager().isActionBarEnabled() ? "&aAktif" : "&cKapalı")));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Combo Timeout: &f" + plugin.getConfigManager().getComboTimeout() + " saniye"));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Mob Hits: &f" + (plugin.getConfigManager().isMobHitsEnabled() ? "&aAktif" : "&cKapalı")));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Leaderboard Boyutu: &f" + plugin.getConfigManager().getLeaderboardSize()));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Database: &f" + plugin.getConfigManager().getDatabaseType().toUpperCase()));
-        player.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e▸ Aktif Dünyalar: &f" +
-            (plugin.getConfigManager().getEnabledWorlds().isEmpty() ? "Tümü" :
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.language_setting", plugin.getLangManager().getCurrentLanguage()));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.sounds_setting", plugin.getConfigManager().isSoundsEnabled() ? plugin.getLangManager().getMessage("gui.admin.active_status") : plugin.getLangManager().getMessage("gui.admin.inactive_status")));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.actionbar_setting", plugin.getConfigManager().isActionBarEnabled() ? plugin.getLangManager().getMessage("gui.admin.active_status") : plugin.getLangManager().getMessage("gui.admin.inactive_status")));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.combo_timeout_setting", plugin.getConfigManager().getComboTimeout()));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.mob_hits_setting", plugin.getConfigManager().isMobHitsEnabled() ? plugin.getLangManager().getMessage("gui.admin.active_status") : plugin.getLangManager().getMessage("gui.admin.inactive_status")));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.leaderboard_size_setting", plugin.getConfigManager().getLeaderboardSize()));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.database_setting", plugin.getConfigManager().getDatabaseType().toUpperCase()));
+        player.sendMessage(plugin.getLangManager().getMessage("gui.admin.enabled_worlds_setting",
+            (plugin.getConfigManager().getEnabledWorlds().isEmpty() ? plugin.getLangManager().getMessage("gui.admin.all_worlds") :
             String.join(", ", plugin.getConfigManager().getEnabledWorlds()))));
         player.sendMessage("");
         playSuccessSound();

@@ -44,6 +44,55 @@ gui:
     reload_success: "&a✓ Admin panel güncellendi!"
     reload_error: "&cReload hatası: {}"
     
+    # Admin Info Messages
+    plugin_info_header: "&6&l⚡ Combat-Master Admin Bilgileri ⚡"
+    developer: "&e▸ Geliştirici: &fMelut"
+    api_version: "&e▸ API Versiyonu: &f{}"
+    language_info: "&e▸ Dil: &f{}"
+    open_menus: "&e▸ Açık Menüler: &a{}"
+    online_players: "&e▸ Online Oyuncular: &a{}"
+    discord_info: "&a▸ Discord: &fhttps://discord.com/users/871721944268038175"
+    github_info: "&a▸ GitHub: &fhttps://github.com/amhunter1"
+    
+    database_info_header: "&d&l📊 Database Bilgileri"
+    database_type: "&e▸ Database Türü: &f{}"
+    database_host: "&e▸ Host: &f{}"
+    database_port: "&e▸ Port: &f{}"
+    database_name: "&e▸ Database: &f{}"
+    database_file: "&e▸ Dosya: &f{}"
+    database_connection: "&e▸ Bağlantı: &aAktif"
+    database_pool: "&e▸ Pool Boyutu: &f10 (max)"
+    
+    system_info_header: "&b&l📊 Sistem Bilgileri"
+    java_version: "&e▸ Java Versiyonu: &f{}"
+    os_info: "&e▸ OS: &f{}"
+    server_info: "&e▸ Sunucu: &f{}"
+    server_version: "&e▸ Versiyon: &f{}"
+    bukkit_version: "&e▸ Bukkit: &f{}"
+    memory_usage: "&e▸ Bellek Kullanımı: &a{}MB &7/ &e{}MB"
+    free_memory: "&e▸ Serbest Bellek: &a{}MB"
+    cpu_cores: "&e▸ CPU Çekirdekleri: &f{}"
+    
+    config_info_header: "&c&l📝 Config Bilgileri"
+    language_setting: "&e▸ Dil: &f{}"
+    sounds_setting: "&e▸ Sesler: &f{}"
+    actionbar_setting: "&e▸ Action Bar: &f{}"
+    combo_timeout_setting: "&e▸ Combo Timeout: &f{} saniye"
+    mob_hits_setting: "&e▸ Mob Hits: &f{}"
+    leaderboard_size_setting: "&e▸ Leaderboard Boyutu: &f{}"
+    database_setting: "&e▸ Database: &f{}"
+    enabled_worlds_setting: "&e▸ Aktif Dünyalar: &f{}"
+    all_worlds: "Tümü"
+    active_status: "&aAktif"
+    inactive_status: "&cKapalı"
+    
+    # bStats Section
+    bstats_title: "&a🎯 bStats Durumu"
+    bstats_desc: "&7Metrics ve istatistik durumu"
+    bstats_data_collection: "&f▸ Veri toplama: &aAktif"
+    bstats_privacy: "&f▸ Gizlilik: &7Anonim veriler"
+    bstats_auto_send: "&7İstatistikler otomatik olarak gönderiliyor"
+    
   # Quick Commands Menu
   quick:
     title: "&6⚡ Hızlı Admin Komutları"

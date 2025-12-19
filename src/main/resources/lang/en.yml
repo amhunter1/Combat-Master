@@ -44,6 +44,55 @@ gui:
     reload_success: "&a✓ Admin panel updated!"
     reload_error: "&cReload error: {}"
     
+    # Admin Info Messages
+    plugin_info_header: "&6&l⚡ Combat-Master Admin Information ⚡"
+    developer: "&e▸ Developer: &fMelut"
+    api_version: "&e▸ API Version: &f{}"
+    language_info: "&e▸ Language: &f{}"
+    open_menus: "&e▸ Open Menus: &a{}"
+    online_players: "&e▸ Online Players: &a{}"
+    discord_info: "&a▸ Discord: &fhttps://discord.com/users/871721944268038175"
+    github_info: "&a▸ GitHub: &fhttps://github.com/amhunter1"
+    
+    database_info_header: "&d&l📊 Database Information"
+    database_type: "&e▸ Database Type: &f{}"
+    database_host: "&e▸ Host: &f{}"
+    database_port: "&e▸ Port: &f{}"
+    database_name: "&e▸ Database: &f{}"
+    database_file: "&e▸ File: &f{}"
+    database_connection: "&e▸ Connection: &aActive"
+    database_pool: "&e▸ Pool Size: &f10 (max)"
+    
+    system_info_header: "&b&l📊 System Information"
+    java_version: "&e▸ Java Version: &f{}"
+    os_info: "&e▸ OS: &f{}"
+    server_info: "&e▸ Server: &f{}"
+    server_version: "&e▸ Version: &f{}"
+    bukkit_version: "&e▸ Bukkit: &f{}"
+    memory_usage: "&e▸ Memory Usage: &a{}MB &7/ &e{}MB"
+    free_memory: "&e▸ Free Memory: &a{}MB"
+    cpu_cores: "&e▸ CPU Cores: &f{}"
+    
+    config_info_header: "&c&l📝 Config Information"
+    language_setting: "&e▸ Language: &f{}"
+    sounds_setting: "&e▸ Sounds: &f{}"
+    actionbar_setting: "&e▸ Action Bar: &f{}"
+    combo_timeout_setting: "&e▸ Combo Timeout: &f{} seconds"
+    mob_hits_setting: "&e▸ Mob Hits: &f{}"
+    leaderboard_size_setting: "&e▸ Leaderboard Size: &f{}"
+    database_setting: "&e▸ Database: &f{}"
+    enabled_worlds_setting: "&e▸ Enabled Worlds: &f{}"
+    all_worlds: "All"
+    active_status: "&aActive"
+    inactive_status: "&cDisabled"
+    
+    # bStats Section
+    bstats_title: "&a🎯 bStats Status"
+    bstats_desc: "&7Metrics and statistics status"
+    bstats_data_collection: "&f▸ Data Collection: &aActive"
+    bstats_privacy: "&f▸ Privacy: &7Anonymous data"
+    bstats_auto_send: "&7Statistics are automatically sent"
+    
   # Quick Commands Menu
   quick:
     title: "&6⚡ Quick Admin Commands"
