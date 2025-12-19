@@ -106,7 +106,7 @@ public class PlayerManagementMenu extends BaseGUI {
             p -> {
                 int closedCount = plugin.getMenuManager().getOpenMenuCount();
                 plugin.getMenuManager().closeAllMenus();
-                p.sendMessage("&a✓ " + closedCount + " adet menü kapatıldı!");
+                p.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ " + closedCount + " adet menü kapatıldı!"));
                 playSuccessSound();
                 refresh();
             }
@@ -121,7 +121,7 @@ public class PlayerManagementMenu extends BaseGUI {
             p -> {
                 refresh();
                 playSuccessSound();
-                p.sendMessage("&a✓ Oyuncu listesi güncellendi!");
+                p.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ Oyuncu listesi güncellendi!"));
             }
         );
     }
@@ -130,24 +130,24 @@ public class PlayerManagementMenu extends BaseGUI {
         admin.closeInventory();
         
         admin.sendMessage("");
-        admin.sendMessage("&e&l👤 " + target.getName() + " Yönetim Seçenekleri");
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&e&l👤 " + target.getName() + " Yönetim Seçenekleri"));
         admin.sendMessage("");
-        admin.sendMessage("&a1. &f/combatmaster reset " + target.getName() + " &7- Combo'sunu sıfırla");
-        admin.sendMessage("&a2. &f/combatmaster stats " + target.getName() + " &7- İstatistikleri göster");
-        admin.sendMessage("&a3. &f/tp " + target.getName() + " &7- Oyuncuya ışınlan");
-        admin.sendMessage("&a4. &f/tp " + admin.getName() + " " + target.getName() + " &7- Oyuncuyu yanına çek");
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a1. &f/combatmaster reset " + target.getName() + " &7- Combo'sunu sıfırla"));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a2. &f/combatmaster stats " + target.getName() + " &7- İstatistikleri göster"));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a3. &f/tp " + target.getName() + " &7- Oyuncuya ışınlan"));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a4. &f/tp " + admin.getName() + " " + target.getName() + " &7- Oyuncuyu yanına çek"));
         admin.sendMessage("");
         
         CombatManager.CombatData playerData = plugin.getCombatManager().getPlayerData(target.getUniqueId());
         if (playerData != null) {
-            admin.sendMessage("&f📊 &7Detaylı İstatistikler:");
-            admin.sendMessage("&f▸ Mevcut Combo: &e" + playerData.getCurrentCombo());
-            admin.sendMessage("&f▸ En İyi Combo: &6" + playerData.getBestCombo());
-            admin.sendMessage("&f▸ Toplam Hit: &b" + playerData.getTotalHits());
+            admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f📊 &7Detaylı İstatistikler:"));
+            admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ Mevcut Combo: &e" + playerData.getCurrentCombo()));
+            admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ En İyi Combo: &6" + playerData.getBestCombo()));
+            admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ Toplam Hit: &b" + playerData.getTotalHits()));
         }
         
         admin.sendMessage("");
-        admin.sendMessage("&7Menüye dönmek için &e/combatmaster gui &7yazabilirsiniz.");
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&7Menüye dönmek için &e/combatmaster gui &7yazabilirsiniz."));
         admin.sendMessage("");
         
         playSuccessSound();
@@ -163,8 +163,8 @@ public class PlayerManagementMenu extends BaseGUI {
             }
         }
         
-        admin.sendMessage("&a✓ " + resetCount + " oyuncunun combo'su sıfırlandı!");
-        plugin.getServer().broadcastMessage("&c⚡ Tüm combo'lar bir yönetici tarafından sıfırlandı!");
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&a✓ " + resetCount + " oyuncunun combo'su sıfırlandı!"));
+        plugin.getServer().broadcastMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&c⚡ Tüm combo'lar bir yönetici tarafından sıfırlandı!"));
         
         playSuccessSound();
         refresh();
@@ -172,7 +172,7 @@ public class PlayerManagementMenu extends BaseGUI {
 
     private void showBulkStats(Player admin) {
         admin.sendMessage("");
-        admin.sendMessage("&d&l📊 Toplu Oyuncu İstatistikleri");
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&d&l📊 Toplu Oyuncu İstatistikleri"));
         admin.sendMessage("");
         
         int onlineCount = plugin.getServer().getOnlinePlayers().size();
@@ -181,15 +181,15 @@ public class PlayerManagementMenu extends BaseGUI {
         int maxCombo = getMaxComboOnline();
         String topPlayer = getTopPlayerOnline();
         
-        admin.sendMessage("&f▸ Online Oyuncular: &a" + onlineCount);
-        admin.sendMessage("&f▸ Aktif Combo'lar: &e" + activeCombos);
-        admin.sendMessage("&f▸ Toplam Hit (Online): &b" + GUIUtils.formatNumber(totalHits));
-        admin.sendMessage("&f▸ En Yüksek Combo: &6" + maxCombo);
-        admin.sendMessage("&f▸ En İyi Oyuncu: &e" + (topPlayer != null ? topPlayer : "Yok"));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ Online Oyuncular: &a" + onlineCount));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ Aktif Combo'lar: &e" + activeCombos));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ Toplam Hit (Online): &b" + GUIUtils.formatNumber(totalHits)));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ En Yüksek Combo: &6" + maxCombo));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&f▸ En İyi Oyuncu: &e" + (topPlayer != null ? topPlayer : "Yok")));
         admin.sendMessage("");
         
-        admin.sendMessage("&7Bu istatistikler sadece online oyuncuları kapsamaktadır.");
-        admin.sendMessage("&7Tam istatistikler için database'e bakınız.");
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&7Bu istatistikler sadece online oyuncuları kapsamaktadır."));
+        admin.sendMessage(org.bukkit.ChatColor.translateAlternateColorCodes('&', "&7Tam istatistikler için database'e bakınız."));
         admin.sendMessage("");
         
         playSuccessSound();

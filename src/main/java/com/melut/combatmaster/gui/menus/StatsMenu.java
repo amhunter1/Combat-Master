@@ -28,9 +28,9 @@ public class StatsMenu extends BaseGUI {
                 .setLore(
                     plugin.getLangManager().getGUILore("best_combo_desc"),
                     "",
-                    plugin.getLangManager().getMessage("gui.lore.best_combo_value", GUIUtils.formatNumber(bestCombo)),
+                    "&6" + GUIUtils.formatNumber(bestCombo),
                     "",
-                    plugin.getLangManager().getMessage("gui.lore.level", getComboLevelName(bestCombo)),
+                    "&fSeviye: " + getComboLevelName(bestCombo),
                     "&7" + getComboDescription(bestCombo)
                 )
                 .setAmount(Math.max(1, Math.min(64, bestCombo)))
@@ -43,7 +43,7 @@ public class StatsMenu extends BaseGUI {
                 .setLore(
                     plugin.getLangManager().getGUILore("total_hits_desc"),
                     "",
-                    plugin.getLangManager().getMessage("gui.lore.total_hits_value", GUIUtils.formatNumber(totalHits)),
+                    "&b" + GUIUtils.formatNumber(totalHits),
                     "",
                     "&7Combat deneyiminizin göstergesi"
                 )
@@ -73,7 +73,7 @@ public class StatsMenu extends BaseGUI {
                         .setLore(
                             plugin.getLangManager().getGUILore("rank_desc"),
                             "",
-                            rank > 0 ? plugin.getLangManager().getMessage("gui.lore.rank_value", rank) : plugin.getLangManager().getMessage("gui.lore.no_rank"),
+                            rank > 0 ? "&a#" + rank : plugin.getLangManager().getMessage("gui.lore.no_rank"),
                             "",
                             rank > 0 ? GUIUtils.getRankColor(rank) + getRankTitle(rank) : "&7İlk combo'nuzu yaparak sıralamaya girin!"
                         )
