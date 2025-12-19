@@ -1,410 +1,793 @@
+<div align="center">
+
 # ⚔️ Combat Master
 
-<div align="center">
+**Minecraft için gelişmiş combat tracking ve istatistik sistemi**
 
-**Profesyonel GUI menü sistemi, çok dil desteği ve gelişmiş özelliklere sahip Minecraft combat plugin'i**
-
+[![Version](https://img.shields.io/badge/version-v2.0.0-blue.svg)](https://github.com/amhunter1/Combat-Master)
 [![bStats](https://img.shields.io/badge/bStats-28408-brightgreen.svg)](https://bstats.org/plugin/bukkit/Combat-Master/28408)
-[![Version](https://img.shields.io/badge/version-v1.0.0-blue.svg)](https://github.com/amhunter1/Combat-Master)
 [![Java](https://img.shields.io/badge/Java-17%2B-orange.svg)](https://adoptium.net/)
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.20%2B-green.svg)](https://www.spigotmc.org/)
+[![License](https://img.shields.io/badge/license-Closed_Source-red.svg)](./LICENSE)
 
-[📥 Download/İndir](https://modrinth.com/plugin/combat-master) • 
-[📖 Wiki](https://github.com/amhunter1/Combat-Master/wiki) • 
-[💬 Discord](https://discord.com/users/871721944268038175) • 
-[🐛 Issues](https://github.com/amhunter1/Combat-Master/issues)
+[📥 **İndir**](https://modrinth.com/plugin/combat-master) • [📖 **Wiki**](https://github.com/amhunter1/Combat-Master/wiki) • [💬 **Discord**](https://discord.com/users/871721944268038175) • [🐛 **Issues**](https://github.com/amhunter1/Combat-Master/issues)
 
 </div>
 
 ---
 
-## 🇹🇷 Türkçe
+## 🌟 Öne Çıkan Özellikler
 
-### ✨ Ana Özellikler
+<table>
+<tr>
+<td>
 
-#### 🖥️ **Profesyonel GUI Menü Sistemi**
-- **Ana Menü**: Combat hub'ı - tüm özelliklere merkezi erişim
-- **İstatistik Menüsü**: Detaylı oyuncu performans analizi ve ilerleme takibi  
-- **Sıralama Menüsü**: Sayfalı leaderboard sistemi (21 oyuncu/sayfa)
-- **Admin Panel**: Kapsamlı yönetici araçları ve sistem monitörü
-- **Ayarlar Menüsü**: Detaylı konfigürasyon görüntüleyici
-- **Oyuncu Yönetimi**: Online oyuncu yönetim araçları
-- **Hızlı Komutlar**: One-click admin işlemleri
+### 🎨 **Modern GUI Sistemi**
+- Tamamen özelleştirilebilir arayüzler
+- Akıcı menü geçişleri
+- Responsive tasarım
+- Çoklu sayfa desteği
 
-#### 🌍 **Çok Dil Desteği**
-- **Türkçe (TR)** ve **İngilizce (EN)** tam desteği
-- Dinamik dil değişimi (`config.yml` → `language: tr/en`)
-- Özelleştirilebilir çeviri dosyaları (`lang/tr.yml`, `lang/en.yml`)
-- Fallback sistemi (eksik çevirilerde otomatik TR)
+</td>
+<td>
 
-#### ⚡ **Gelişmiş Combat Sistemi**
-- Combo seviyelerine göre dinamik ses efektleri
-- Real-time action bar mesajları ve renk sistemi
-- Gelişmiş combo algılama ve timeout yönetimi
-- Mob/player vuruş seçenekleri
-- Dünya bazlı etkinleştirme
+### 🏆 **Combo Sistemi**
+- Gerçek zamanlı combo takibi
+- Seviye bazlı renk kodları
+- Ses efektleri ve animasyonlar
+- Otomatik reset sistemi
 
-#### 📊 **Database & Analytics**
-- **SQLite** (varsayılan) ve **MySQL** desteği
-- **HikariCP** connection pooling
-- **bStats** entegrasyonu (Plugin ID: 28408)
-- Otomatik veri kaydetme ve yedekleme
+</td>
+</tr>
+<tr>
+<td>
 
-### 🚀 Hızlı Başlangıç
+### 📊 **İstatistik Analizi**
+- Detaylı performans metrikleri
+- Sıralama sistemleri
+- İlerleme takibi
+- Karşılaştırmalı analizler
 
-#### Gereksinimler
-- **Java 17+**
-- **Spigot/Paper 1.20+**
-- **PlaceholderAPI** (opsiyonel)
+</td>
+<td>
 
-#### Kurulum
-1. **Plugin'i İndir**: [Latest Release](https://github.com/amhunter1/Combat-Master/releases)
-2. **Kur**: JAR dosyasını `plugins/` klasörüne koy
-3. **Başlat**: Sunucuyu restart et
-4. **Yapılandır**: `plugins/Combat-Master/config.yml` dosyasını düzenle
-5. **Dil Seç**: `language: tr` veya `language: en`
+### ⚙️ **Admin Araçları**
+- Kapsamlı yönetim paneli
+- Toplu işlem desteği
+- Sistem monitörü
+- Otomatik backup
 
-### 🎮 Kullanım
+</td>
+</tr>
+</table>
 
-#### Temel Komutlar
+---
+
+## 🚀 Hızlı Başlangıç
+
+### 📋 **Gereksinimler**
+- **Java**: 17 veya üzeri
+- **Sunucu**: Spigot/Paper 1.20+
+- **RAM**: En az 512MB (önerilen: 1GB+)
+- **PlaceholderAPI**: İsteğe bağlı
+
+### ⚡ **Kurulum**
+
+1. **Plugin'i İndirin**
+   ```bash
+   wget https://github.com/amhunter1/Combat-Master/releases/latest/Combat-Master-v2.0.0.jar
+   ```
+
+2. **Sunucuya Kurun**
+   ```bash
+   mv Combat-Master-v2.0.0.jar plugins/
+   ```
+
+3. **Sunucuyu Başlatın**
+   ```bash
+   # Otomatik konfigürasyon oluşturulacak
+   java -jar spigot.jar
+   ```
+
+4. **Ayarları Yapın**
+   ```yaml
+   # plugins/Combat-Master/config.yml
+   language: "tr"  # Türkçe için
+   enabled-worlds: []  # Tüm dünyalar için boş bırakın
+   ```
+
+---
+
+## 🎮 Ana Sistemler
+
+### 🖥️ **GUI Menü Sistemi**
+
+Combat Master'ın kalbi olan GUI sistemi, kullanıcıların tüm özelliklere kolay erişim sağlamasını mümkün kılar:
+
+<details>
+<summary><strong>📱 Ana Menü Hub</strong></summary>
+
+- **Merkezi Kontrol**: Tüm özelliklere tek noktadan erişim
+- **Dinamik İçerik**: Gerçek zamanlı veri güncellemeleri  
+- **Kullanıcı Dostu**: Sezgisel navigasyon sistemi
+- **Hızlı Erişim**: Favorilerinizi kaydedin
+
 ```bash
-/combatmaster              # Ana GUI menüsünü açar
-/combatmaster gui          # Ana GUI menüsünü açar  
-/combatmaster stats        # İstatistik menüsünü açar
-/combatmaster top          # Leaderboard menüsünü açar
-/combatmaster reload       # Plugin'i yeniden yükler (admin)
+/combatmaster        # Ana menüyü açar
+/cm                  # Kısa versiyon
 ```
 
-#### GUI Navigasyonu
-- **Oyuncular**: `/combatmaster` ile ana menüye erişim
-- **Adminler**: `combatmaster.admin` yetkisi ile tam erişim
-- **Menü İçi**: Sezgisel buton sistemi ve navigasyon
-- **Geri/İleri**: Tüm menülerde tutarlı navigasyon
+</details>
 
-### ⚙️ Konfigürasyon
+<details>
+<summary><strong>📈 İstatistik Paneli</strong></summary>
 
-#### Ana Config (`config.yml`)
+- **Performans Metrikleri**: Combo, hit, seviye analizi
+- **Görsel Grafikler**: İlerleme çubukları ve renk kodları
+- **Karşılaştırma**: Diğer oyuncularla performans kıyası
+- **Geçmiş Veriler**: Zaman bazlı istatistik görüntüleme
+
+**Özellikler:**
+- ⚔️ En İyi Combo Skoru
+- 💎 Toplam Hit Sayısı  
+- 📊 Seviye ve İlerleme
+- 🏅 Sıralama Pozisyonu
+
+</details>
+
+<details>
+<summary><strong>🏆 Liderlik Tablosu</strong></summary>
+
+- **Sayfalı Sistem**: 21 oyuncu/sayfa
+- **Real-time Updates**: Canlı sıralama güncellemeleri
+- **Filtreleme**: Farklı kategorilerde sıralama
+- **Ödül Sistemi**: Top 3 için özel efektler
+
+**Kategoriler:**
+- 🥇 En İyi Combo
+- 🎯 Toplam Hit
+- ⚡ Aktif Oyuncular
+
+</details>
+
+### ⚔️ **Combat Sistemi**
+
+Gelişmiş combat tracking sistemi ile oyuncu performansını detaylı şekilde takip edin:
+
+<details>
+<summary><strong>🎯 Combo Mekanikleri</strong></summary>
+
+**Combo Hesaplama:**
+```java
+// Her başarılı hit combo'yu artırır
+hit -> combo++
+
+// Belirli süre sonra reset
+timeout(10s) -> combo = 0
+
+// Hasar alma durumunda reset
+damage_taken -> combo = 0
+```
+
+**Combo Seviyeleri:**
+- 🟫 **1-5**: Başlangıç (Gri)
+- ⚪ **6-10**: Gelişen (Beyaz)
+- 🟡 **11-20**: İyi (Sarı)  
+- 🟠 **21-35**: Harika (Turuncu)
+- 🔴 **36-50**: Mükemmel (Kırmızı)
+- 🟣 **51-75**: Efsanevi (Mor)
+- 🔵 **76-100**: Destansı (Mavi)
+- 🌟 **100+**: Tanrısal (Gökkuşağı)
+
+</details>
+
+<details>
+<summary><strong>🔊 Ses ve Efekt Sistemi</strong></summary>
+
+**Dinamik Ses Efektleri:**
+- **Düşük Combo (1-10)**: `ENTITY_PLAYER_ATTACK_STRONG`
+- **Orta Combo (11-25)**: `ENTITY_EXPERIENCE_ORB_PICKUP`  
+- **Yüksek Combo (26-50)**: `ENTITY_PLAYER_LEVELUP`
+- **Epic Combo (51+)**: `ENTITY_ENDER_DRAGON_GROWL`
+
+**Action Bar Mesajları:**
+```
+⚔️ Combo: 25 | 🎯 Hit: 1,337 | 🏅 Sıra: #3
+```
+
+</details>
+
+<details>
+<summary><strong>🌍 Dünya Yönetimi</strong></summary>
+
+**Esnek Aktivasyon:**
 ```yaml
-# Dil Ayarları
-language: "tr"  # tr, en
+enabled-worlds:
+  - "world"      # Ana dünya
+  - "pvp_arena"  # PvP arenası
+  # Boş liste = tüm dünyalar aktif
+```
 
-# GUI Ayarları
+**Özel Ayarlar:**
+- Mob vuruşları dahil/hariç
+- Kritik vuruş zorunluluğu
+- Yerden vuruş kontrolü
+- Oyuncu vs oyuncu sınırları
+
+</details>
+
+### 🛠️ **Admin Yönetim Sistemi**
+
+Güçlü admin araçları ile sunucunuzu tam kontrol altında tutun:
+
+<details>
+<summary><strong>👥 Oyuncu Yönetimi</strong></summary>
+
+**Canlı Oyuncu Takibi:**
+- 📊 Real-time istatistikler
+- ⚡ Aktif combo durumları  
+- 🎮 Oyuncu profil analizi
+- 🔧 Tek tık combo reset
+
+**Toplu İşlemler:**
+```bash
+# Tüm combo'ları sıfırla
+/combatmaster reset all
+
+# Belirli oyuncuyu sıfırla  
+/combatmaster reset <oyuncu>
+
+# Toplu istatistik görüntüleme
+/combatmaster bulk-stats
+```
+
+</details>
+
+<details>
+<summary><strong>⚡ Hızlı Komutlar</strong></summary>
+
+**One-Click İşlemler:**
+- 💥 **Tüm Combo Reset**: Sunucu geneli sıfırlama
+- 🚫 **Menü Kapatma**: Tüm açık menüleri kapat
+- 🔄 **Plugin Reload**: Hot-reload sistemi
+- 💾 **Veri Kaydetme**: Manuel backup
+- 🧹 **Cache Temizleme**: Bellek optimizasyonu
+- 🚨 **Acil Durdurma**: Güvenli plugin kapatma
+
+</details>
+
+<details>
+<summary><strong>📊 Sistem Monitörü</strong></summary>
+
+**Performance Dashboard:**
+```
+🖥️ Sistem Bilgileri:
+├── Java: OpenJDK 17.0.2
+├── Bellek: 2.1GB / 4.0GB (52%)
+├── CPU: 8 cores @ 2.4GHz
+└── Uptime: 3d 14h 22m
+
+⚡ Plugin Metrikleri:  
+├── Açık Menüler: 23/50
+├── Aktif Combo'lar: 8
+├── Database: SQLite (OK)
+└── bStats: Enabled
+```
+
+</details>
+
+---
+
+## 🗄️ **Database & Performans**
+
+### 💾 **Veri Yönetimi**
+
+<details>
+<summary><strong>Database Seçenekleri</strong></summary>
+
+**SQLite (Varsayılan):**
+```yaml
+database:
+  type: "sqlite"
+  sqlite:
+    file: "combatmaster.db"
+    backup-interval: 24h
+```
+
+**MySQL (Gelişmiş):**
+```yaml
+database:
+  type: "mysql"
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "combatmaster"
+    username: "user"
+    password: "pass"
+    pool-size: 10
+```
+
+</details>
+
+<details>
+<summary><strong>Performans Optimizasyonları</strong></summary>
+
+**HikariCP Connection Pool:**
+- ⚡ Ultra hızlı bağlantı yönetimi
+- 🔄 Otomatik bağlantı yenileme  
+- 📊 Real-time pool monitoring
+- 🛡️ Connection leak detection
+
+**Memory Management:**
+- 🧠 Akıllı cache sistemi
+- 🔥 Hot-data caching
+- 🗑️ Otomatik garbage collection
+- 📈 Memory usage monitoring
+
+</details>
+
+---
+
+## 🌍 **Çoklu Dil Desteği**
+
+### 🔤 **Desteklenen Diller**
+
+<table>
+<tr>
+<td align="center">
+🇹🇷<br>
+<strong>Türkçe</strong><br>
+<code>language: "tr"</code>
+</td>
+<td align="center">
+🇬🇧<br>
+<strong>English</strong><br>
+<code>language: "en"</code>
+</td>
+</tr>
+</table>
+
+### 🔧 **Dil Özelleştirme**
+
+**Dil Dosyası Yapısı:**
+```yaml
+# plugins/Combat-Master/lang/tr.yml
 gui:
+  titles:
+    main: "&6&l⚔ Combat Master Hub ⚔"
+    stats: "&e⚡ {0} İstatistikleri"
+    
+  items:
+    best_combo: "&6🏆 En İyi Combo"
+    total_hits: "&b💎 Toplam Hit"
+    
+combo_descriptions:
+  legendary: "Efsanevi seviye! İnanılmaz."
+  godlike: "Tanrısal güç! Sınırları aştınız!"
+```
+
+**Fallback Sistemi:**
+```
+İngilizce mesaj bulunamadı → Türkçe'ye fallback → Varsayılan mesaj
+```
+
+---
+
+## 🎯 **Komutlar ve İzinler**
+
+### 💬 **Oyuncu Komutları**
+
+| Komut | Açıklama | İzin |
+|-------|----------|------|
+| `/combatmaster` | Ana menüyü açar | `combatmaster.use` |
+| `/combatmaster gui` | Ana menüyü açar | `combatmaster.use` |
+| `/combatmaster stats` | İstatistik menüsü | `combatmaster.use` |
+| `/combatmaster top` | Liderlik tablosu | `combatmaster.use` |
+| `/cm` | Kısa komut | `combatmaster.use` |
+
+### ⚙️ **Admin Komutları**
+
+| Komut | Açıklama | İzin |
+|-------|----------|------|
+| `/combatmaster reload` | Plugin'i yeniden yükle | `combatmaster.admin` |
+| `/combatmaster reset <oyuncu>` | Oyuncu combo'sunu sıfırla | `combatmaster.admin` |
+| `/combatmaster reset all` | Tüm combo'ları sıfırla | `combatmaster.admin` |
+| `/combatmaster info` | Plugin bilgilerini göster | `combatmaster.admin` |
+
+### 🔐 **İzin Sistemi**
+
+```yaml
+permissions:
+  combatmaster.use:
+    description: "Temel Combat Master kullanımı"
+    default: true
+    
+  combatmaster.admin:
+    description: "Admin panel erişimi"
+    default: op
+    children:
+      - combatmaster.use
+      - combatmaster.reload
+      - combatmaster.reset
+```
+
+---
+
+## 🔧 **Konfigürasyon**
+
+### ⚙️ **Ana Ayarlar**
+
+<details>
+<summary><strong>config.yml - Tam Konfigürasyon</strong></summary>
+
+```yaml
+# ============================================
+#           COMBAT MASTER v2.0.0
+#     Gelişmiş Combat Tracking Plugin'i
+# ============================================
+
+# Dil Ayarları
+language: "tr"  # Desteklenen: tr, en
+
+# GUI Sistemi
+gui:
+  # Ses Efektleri
   sounds:
     enabled: true
-    open: "BLOCK_CHEST_OPEN"
-    click: "UI_BUTTON_CLICK"
+    open-sound: "BLOCK_CHEST_OPEN"
+    click-sound: "UI_BUTTON_CLICK"
+    success-sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+    error-sound: "ENTITY_VILLAGER_NO"
+    
+  # Performans Ayarları
   performance:
-    auto-refresh-interval: 30
+    auto-refresh-interval: 30  # Saniye
     max-open-menus: 50
+    cache-duration: 300        # Saniye
+    
+  # Görünüm
   appearance:
     use-borders: true
     items-per-page: 21
+    animated-items: true
 
 # Combat Sistemi
-sounds:
-  enabled: true
-  combo-sounds:
-    low: {sound: "ENTITY_PLAYER_ATTACK_STRONG", volume: 0.8, pitch: 1.0}
-    medium: {sound: "ENTITY_EXPERIENCE_ORB_PICKUP", volume: 1.0, pitch: 1.2}
-    high: {sound: "ENTITY_PLAYER_LEVELUP", volume: 1.2, pitch: 1.5}
-    epic: {sound: "ENTITY_ENDER_DRAGON_GROWL", volume: 1.5, pitch: 2.0}
-
-combo:
-  timeout-seconds: 10
-  color-system:
+combat:
+  # Combo Ayarları
+  combo:
+    timeout-seconds: 10
+    reset-on-damage: true
+    
+    # Renk Sistemi
+    color-system:
+      enabled: true
+      colors:
+        1-5: "&7"      # Gri
+        6-10: "&f"     # Beyaz
+        11-20: "&e"    # Sarı
+        21-35: "&6"    # Turuncu
+        36-50: "&c"    # Kırmızı
+        51-75: "&d"    # Pembe
+        76-100: "&5"   # Mor
+        101+: "&b"     # Açık Mavi
+    
+    # Mesaj Sistemi
+    messages:
+      enabled: true
+      interval: 5  # Her 5 combo'da bir mesaj
+      
+  # Action Bar
+  actionbar:
     enabled: true
-    colors:
-      1-5: "&7"    # Gri
-      6-10: "&f"   # Beyaz  
-      11-20: "&e"  # Sarı
-      21-35: "&6"  # Turuncu
-      36-50: "&c"  # Kırmızı
-      51-75: "&d"  # Pembe
-      76-100: "&5" # Mor
-      101+: "&b"   # Açık Mavi
-
-# Database
-database:
-  type: "sqlite"  # sqlite, mysql
-  sqlite:
-    file: "combatmaster.db"
-```
-
-#### Dil Dosyaları
-- **Türkçe**: `plugins/Combat-Master/lang/tr.yml`
-- **İngilizce**: `plugins/Combat-Master/lang/en.yml`
-- **Özelleştirme**: Dosyaları düzenleyerek metinleri değiştirin
-
-### 🛠️ Admin Araçları
-
-#### GUI Admin Panel
-- **Plugin Yönetimi**: Reload, restart, system info
-- **Oyuncu Yönetimi**: Online player tracking, combo reset
-- **Database Yönetimi**: Backup, statistics, cleanup
-- **Hızlı Komutlar**: Toplu işlemler, emergency stop
-- **Sistem İzleme**: Memory, performance, metrics
-
-#### İzinler
-- `combatmaster.use` (varsayılan: `true`) - Temel kullanım
-- `combatmaster.admin` (varsayılan: `op`) - Admin erişimi
-
-### 📈 PlaceholderAPI
-
-```bash
-%combatmaster_combo%        # Mevcut combo
-%combatmaster_best_combo%   # En iyi combo
-%combatmaster_total_hits%   # Toplam hit
-%combatmaster_rank%         # Sıralamadaki yer
-```
-
-### 💡 İpuçları & SSS
-
-**Q: Menüler açılmıyor?**
-A: `combatmaster.use` izninin olduğundan emin olun.
-
-**Q: Dil değişmiyor?**
-A: `config.yml`'de `language: tr` veya `language: en` ayarladıktan sonra `/combatmaster reload`
-
-**Q: Sesler çalışmıyor?**
-A: `sounds.enabled: true` olduğundan emin olun, ses adları sunucu versiyonuyla uyumlu olmalı.
-
----
-
-## 🇬🇧 English
-
-### ✨ Key Features
-
-#### 🖥️ **Professional GUI Menu System**
-- **Main Menu**: Combat hub with centralized access to all features
-- **Stats Menu**: Detailed player performance analysis and progress tracking
-- **Leaderboard Menu**: Paginated ranking system (21 players/page)
-- **Admin Panel**: Comprehensive management tools and system monitoring
-- **Settings Menu**: Detailed configuration viewer
-- **Player Management**: Online player management tools
-- **Quick Commands**: One-click admin operations
-
-#### 🌍 **Multi-Language Support**
-- **Turkish (TR)** and **English (EN)** full support
-- Dynamic language switching (`config.yml` → `language: tr/en`)
-- Customizable translation files (`lang/tr.yml`, `lang/en.yml`)  
-- Fallback system (automatic TR fallback for missing translations)
-
-#### ⚡ **Advanced Combat System**
-- Dynamic sound effects based on combo levels
-- Real-time action bar messages and color system
-- Advanced combo detection and timeout management
-- Mob/player hit options
-- World-based activation
-
-#### 📊 **Database & Analytics**
-- **SQLite** (default) and **MySQL** support
-- **HikariCP** connection pooling
-- **bStats** integration (Plugin ID: 28408)
-- Automatic data saving and backup
-
-### 🚀 Quick Start
-
-#### Requirements
-- **Java 17+**
-- **Spigot/Paper 1.20+**
-- **PlaceholderAPI** (optional)
-
-#### Installation
-1. **Download Plugin**: [Latest Release](https://github.com/amhunter1/Combat-Master/releases)
-2. **Install**: Place JAR file in `plugins/` folder
-3. **Start**: Restart the server
-4. **Configure**: Edit `plugins/Combat-Master/config.yml`
-5. **Set Language**: `language: tr` or `language: en`
-
-### 🎮 Usage
-
-#### Basic Commands
-```bash
-/combatmaster              # Opens main GUI menu
-/combatmaster gui          # Opens main GUI menu
-/combatmaster stats        # Opens stats menu
-/combatmaster top          # Opens leaderboard menu
-/combatmaster reload       # Reloads plugin (admin)
-```
-
-#### GUI Navigation
-- **Players**: Access main menu with `/combatmaster`
-- **Admins**: Full access with `combatmaster.admin` permission
-- **In-Menu**: Intuitive button system and navigation
-- **Back/Forward**: Consistent navigation across all menus
-
-### ⚙️ Configuration
-
-#### Main Config (`config.yml`)
-```yaml
-# Language Settings
-language: "en"  # tr, en
-
-# GUI Settings
-gui:
+    format: "⚔️ Combo: {combo} | 🎯 Hit: {hits} | 🏅 Sıra: #{rank}"
+    
+  # Ses Efektleri
   sounds:
     enabled: true
-    open: "BLOCK_CHEST_OPEN"
-    click: "UI_BUTTON_CLICK"
-  performance:
-    auto-refresh-interval: 30
-    max-open-menus: 50
-  appearance:
-    use-borders: true
-    items-per-page: 21
+    combo-sounds:
+      low:    {sound: "ENTITY_PLAYER_ATTACK_STRONG", volume: 0.8, pitch: 1.0}
+      medium: {sound: "ENTITY_EXPERIENCE_ORB_PICKUP", volume: 1.0, pitch: 1.2}
+      high:   {sound: "ENTITY_PLAYER_LEVELUP", volume: 1.2, pitch: 1.5}
+      epic:   {sound: "ENTITY_ENDER_DRAGON_GROWL", volume: 1.5, pitch: 2.0}
+      
+    reset-sound: {sound: "ENTITY_ITEM_BREAK", volume: 0.6, pitch: 0.8}
 
-# Combat System
-sounds:
-  enabled: true
-  combo-sounds:
-    low: {sound: "ENTITY_PLAYER_ATTACK_STRONG", volume: 0.8, pitch: 1.0}
-    medium: {sound: "ENTITY_EXPERIENCE_ORB_PICKUP", volume: 1.0, pitch: 1.2}
-    high: {sound: "ENTITY_PLAYER_LEVELUP", volume: 1.2, pitch: 1.5}
-    epic: {sound: "ENTITY_ENDER_DRAGON_GROWL", volume: 1.5, pitch: 2.0}
-
-combo:
-  timeout-seconds: 10
-  color-system:
-    enabled: true
-    colors:
-      1-5: "&7"    # Gray
-      6-10: "&f"   # White
-      11-20: "&e"  # Yellow
-      21-35: "&6"  # Orange
-      36-50: "&c"  # Red
-      51-75: "&d"  # Pink
-      76-100: "&5" # Purple
-      101+: "&b"   # Aqua
-
+# Dünya Ayarları
+worlds:
+  enabled-worlds: []  # Boş = tüm dünyalar, örnek: ["world", "world_nether"]
+  
+# Hit Ayarları  
+hits:
+  count-mob-hits: true
+  count-ground-hits: false
+  critical-only: false
+  
 # Database
 database:
-  type: "sqlite"  # sqlite, mysql
+  type: "sqlite"  # sqlite veya mysql
+  
   sqlite:
     file: "combatmaster.db"
+    backup:
+      enabled: true
+      interval-hours: 24
+      keep-backups: 7
+      
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "combatmaster"
+    username: "root"
+    password: ""
+    pool-size: 10
+    timeout: 5000
+    
+# Liderlik Tablosu
+leaderboard:
+  size: 100
+  update-interval: 60  # Saniye
+  
+# bStats Analytics
+metrics:
+  enabled: true
+  plugin-id: 28408
+
+# Debug
+debug:
+  enabled: false
+  log-combo-events: false
+  log-database-queries: false
 ```
 
-#### Language Files
-- **Turkish**: `plugins/Combat-Master/lang/tr.yml`
-- **English**: `plugins/Combat-Master/lang/en.yml`
-- **Customize**: Edit files to change messages
-
-### 🛠️ Admin Tools
-
-#### GUI Admin Panel
-- **Plugin Management**: Reload, restart, system info
-- **Player Management**: Online player tracking, combo reset
-- **Database Management**: Backup, statistics, cleanup  
-- **Quick Commands**: Bulk operations, emergency stop
-- **System Monitoring**: Memory, performance, metrics
-
-#### Permissions
-- `combatmaster.use` (default: `true`) - Basic usage
-- `combatmaster.admin` (default: `op`) - Admin access
-
-### 📈 PlaceholderAPI
-
-```bash
-%combatmaster_combo%        # Current combo
-%combatmaster_best_combo%   # Best combo
-%combatmaster_total_hits%   # Total hits
-%combatmaster_rank%         # Rank position
-```
-
-### 💡 Tips & FAQ
-
-**Q: Menus not opening?**
-A: Ensure you have `combatmaster.use` permission.
-
-**Q: Language not changing?**
-A: Set `language: tr` or `language: en` in `config.yml`, then `/combatmaster reload`
-
-**Q: Sounds not working?**
-A: Ensure `sounds.enabled: true`, sound names must match your server version.
+</details>
 
 ---
 
-## 🔧 Development
+## 📈 **PlaceholderAPI Entegrasyonu**
 
-### Project Structure
-```
-src/main/java/com/melut/combatmaster/
-├── gui/                    # GUI Framework
-│   ├── BaseGUI.java       # Base menu class
-│   ├── MenuManager.java   # Menu management
-│   ├── MenuListener.java  # Click handling
-│   ├── utils/             # GUI utilities
-│   └── menus/             # All menu implementations
-├── managers/              # Core managers
-│   ├── CombatManager.java # Combat logic
-│   ├── ConfigManager.java # Config handling
-│   └── LangManager.java   # Language system
-├── database/              # Database layer
-└── listeners/             # Event listeners
+### 🏷️ **Mevcut Placeholders**
 
-src/main/resources/
-├── config.yml            # Main configuration
-├── plugin.yml           # Plugin metadata
-└── lang/               # Language files
-    ├── tr.yml         # Turkish
-    └── en.yml         # English
+| Placeholder | Açıklama | Örnek |
+|-------------|----------|-------|
+| `%combatmaster_combo%` | Mevcut combo | `25` |
+| `%combatmaster_best_combo%` | En iyi combo | `87` |
+| `%combatmaster_total_hits%` | Toplam hit | `1,337` |
+| `%combatmaster_rank%` | Sıralamadaki yer | `#3` |
+| `%combatmaster_level%` | Combat seviyesi | `Efsanevi` |
+
+### 📊 **Kullanım Örneği**
+
+```yaml
+# TAB plugin ile kullanım
+scoreboard:
+  title: "&6Combat Stats"
+  lines:
+    - "&eCombo: &c%combatmaster_combo%"
+    - "&eBest: &6%combatmaster_best_combo%"
+    - "&eRank: &a%combatmaster_rank%"
 ```
 
-### Building
+---
+
+## 🚨 **Sorun Giderme**
+
+### ❓ **Sık Sorulan Sorular**
+
+<details>
+<summary><strong>Q: Menüler açılmıyor, ne yapmalıyım?</strong></summary>
+
+**Çözüm Adımları:**
+1. İzinleri kontrol edin: `/lp user <oyuncu> permission check combatmaster.use`
+2. Console'da hata mesajları var mı kontrol edin
+3. Plugin'in düzgün yüklendiğini doğrulayın: `/plugins`
+4. Config dosyasının syntax hatası var mı kontrol edin
+
+</details>
+
+<details>
+<summary><strong>Q: Combo değerleri gösterilmiyor?</strong></summary>
+
+**Olası Nedenler:**
+- Database bağlantı sorunu
+- Dünya ayarlarında bu dünya aktif değil
+- Hit detection ayarları yanlış
+
+**Çözüm:**
 ```bash
+/combatmaster reload  # Plugin'i yeniden yükle
+```
+
+</details>
+
+<details>
+<summary><strong>Q: Dil değişiklikleri uygulanmıyor?</strong></summary>
+
+**Adımlar:**
+1. `config.yml`'de `language: "tr"` veya `"en"` olarak ayarlayın
+2. `/combatmaster reload` komutunu çalıştırın
+3. Hala çalışmıyorsa sunucuyu restart edin
+
+</details>
+
+<details>
+<summary><strong>Q: Performans sorunları yaşıyorum?</strong></summary>
+
+**Optimizasyon:**
+```yaml
+# config.yml
+gui:
+  performance:
+    max-open-menus: 25      # Düşürün
+    cache-duration: 600     # Artırın
+    
+leaderboard:
+  update-interval: 120      # Artırın
+  
+database:
+  mysql:
+    pool-size: 5            # Düşürün
+```
+
+</details>
+
+---
+
+## 🔄 **Güncelleme Geçmişi**
+
+### 🆕 **v2.0.0 - Major Update**
+
+**🎉 Yeni Özellikler:**
+- ✨ Tamamen yenilenmiş GUI sistemi
+- 🎨 Modern menü tasarımları  
+- ⚡ Geliştirilmiş performans
+- 🔧 Advanced admin araçları
+- 📊 Detaylı sistem monitörü
+
+**🛠️ Düzeltmeler:**
+- 🐛 Placeholder rendering sorunları
+- 🎨 Renk kodu görüntüleme hataları
+- 📱 Menü pozisyonlama sorunları
+- 💾 Database bağlantı istikrarı
+
+**⚠️ Breaking Changes:**
+- Config formatı güncellendi
+- Bazı komutlar değişti
+- Database schema güncellemesi gerekli
+
+---
+
+## 👨‍💻 **Geliştirici Bilgileri**
+
+### 📁 **Proje Yapısı**
+
+```
+Combat-Master/
+├── 📂 src/main/java/com/melut/combatmaster/
+│   ├── 📂 gui/                    # GUI Framework
+│   │   ├── 📄 BaseGUI.java       # Base menü sınıfı
+│   │   ├── 📄 MenuManager.java   # Menü yöneticisi
+│   │   ├── 📄 MenuListener.java  # Click handler
+│   │   ├── 📂 utils/             # GUI yardımcıları
+│   │   └── 📂 menus/             # Menü implementasyonları
+│   │       ├── 📄 MainMenu.java
+│   │       ├── 📄 StatsMenu.java
+│   │       ├── 📄 LeaderboardMenu.java
+│   │       └── 📄 AdminMenu.java
+│   ├── 📂 managers/              # Core yöneticiler
+│   │   ├── 📄 CombatManager.java # Combat logic
+│   │   ├── 📄 ConfigManager.java # Config handler
+│   │   └── 📄 LangManager.java   # Dil sistemi
+│   ├── 📂 database/              # Database katmanı
+│   │   └── 📄 DatabaseManager.java
+│   ├── 📂 listeners/             # Event listeners
+│   │   └── 📄 CombatListener.java
+│   ├── 📂 commands/              # Komut handlers
+│   │   └── 📄 CombatMasterCommand.java
+│   └── 📄 CombatMaster.java      # Ana plugin sınıfı
+│
+├── 📂 src/main/resources/
+│   ├── 📄 config.yml            # Ana konfigürasyon
+│   ├── 📄 plugin.yml           # Plugin metadata
+│   └── 📂 lang/               # Dil dosyaları
+│       ├── 📄 tr.yml         # Türkçe
+│       └── 📄 en.yml         # İngilizce
+│
+└── 📄 pom.xml                  # Maven konfigürasyonu
+```
+
+### 🛠️ **Build ve Geliştirme**
+
+```bash
+# Projeyi klonla
 git clone https://github.com/amhunter1/Combat-Master.git
 cd Combat-Master
-mvn clean package
+
+# Maven ile build
+mvn clean compile package
+
+# Test sunucusunda çalıştır
+java -jar target/Combat-Master-v2.0.0.jar
 ```
 
-### Contributing
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
+**Gereksinimler:**
+- Java 17+ SDK
+- Maven 3.8+
+- Git
 
 ---
 
-## 📊 Statistics
-
-- **📈 bStats**: [View Plugin Statistics](https://bstats.org/plugin/bukkit/Combat-Master/28408)
-- **⭐ GitHub**: [Star the Repository](https://github.com/amhunter1/Combat-Master)
-- **🐛 Issues**: [Report Bugs](https://github.com/amhunter1/Combat-Master/issues)
-
----
-
-## 📞 Support & Contact
+## 📊 **İstatistikler ve Analytics**
 
 <div align="center">
 
-**🔗 Links**
-- **Discord**: [Contact Developer](https://discord.com/users/871721944268038175)
-- **GitHub**: [Project Repository](https://github.com/amhunter1/Combat-Master)  
-- **Download**: [Modrinth Page](https://modrinth.com/plugin/combat-master)
+### 📈 **bStats Analytics**
 
-**💝 Support the Project**
-- ⭐ Star the repository
-- 🐛 Report issues and bugs
-- 💡 Suggest new features
-- 🤝 Contribute code improvements
+[![bStats Graph](https://bstats.org/signatures/bukkit/Combat-Master.svg)](https://bstats.org/plugin/bukkit/Combat-Master/28408)
+
+**[📊 Detaylı İstatistikleri Görüntüle](https://bstats.org/plugin/bukkit/Combat-Master/28408)**
 
 </div>
 
 ---
 
-## 📄 License
+## 💝 **Destek ve Katkı**
 
-This project is closed-source. Distribution terms belong to the owner. All rights reserved unless stated otherwise.
+<div align="center">
 
-Bu proje kapalı kaynak kodludur. Dağıtım koşulları proje sahibine aittir. Aksi belirtilmedikçe tüm hakları saklıdır.
+### 🤝 **Projeye Destek Olun**
+
+<table>
+<tr>
+<td align="center">
+⭐<br>
+<strong>Star</strong><br>
+Repo'yu yıldızlayın
+</td>
+<td align="center">
+🐛<br>
+<strong>Issues</strong><br>
+Bug raporlayın
+</td>
+<td align="center">
+💡<br>
+<strong>Feature Request</strong><br>
+Özellik önerin
+</td>
+<td align="center">
+🤝<br>
+<strong>Contribute</strong><br>
+Kod katkısı yapın
+</td>
+</tr>
+</table>
+
+### 📞 **İletişim Kanalları**
+
+**🔗 Links**
+- **Discord**: [Developer](https://discord.com/users/871721944268038175)
+- **GitHub**: [Repository](https://github.com/amhunter1/Combat-Master)  
+- **Download**: [Modrinth](https://modrinth.com/plugin/combat-master)
+
+</div>
+
+---
+
+## 📄 **Lisans**
+
+Bu proje **kapalı kaynak** kodludur. Tüm hakları geliştiriciye aittir. Dağıtım ve kullanım koşulları için lütfen lisans dosyasını kontrol ediniz.
 
 ---
 
 <div align="center">
 
-**⚔️ Combat Master v1.0.0**
+## ⚔️ **Combat Master v2.0.0**
 
-*Made with ❤️ by [Melut](https://github.com/amhunter1)*
+***Gelişmiş Combat Tracking Sistemi***
+
+**Made with ❤️ by [Melut](https://github.com/amhunter1)**
+
+---
+
+*En iyi combat deneyimi için teşekkürler! 🎮*
 
 </div>
