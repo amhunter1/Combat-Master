@@ -83,23 +83,8 @@ public class StatsMenu extends BaseGUI {
             });
         });
 
-        setItem(23, ItemBuilder.create(Material.CLOCK)
-                .setName(plugin.getLangManager().getGUIItem("combat_info"))
-                .setLore(
-                    plugin.getLangManager().getGUILore("combat_info_desc"),
-                    "",
-                    plugin.getLangManager().getMessage("combat_info.timeout", plugin.getConfigManager().getComboTimeout()),
-                    plugin.getLangManager().getMessage("combat_info.sounds") + ": " + (plugin.getConfigManager().isSoundsEnabled() ? plugin.getLangManager().getMessage("gui.lore.sounds_on") : plugin.getLangManager().getMessage("gui.lore.sounds_off")),
-                    plugin.getLangManager().getMessage("combat_info.actionbar") + ": " + (plugin.getConfigManager().isActionBarEnabled() ? plugin.getLangManager().getMessage("gui.lore.sounds_on") : plugin.getLangManager().getMessage("gui.lore.sounds_off")),
-                    plugin.getLangManager().getMessage("combat_info.mob_hits") + ": " + (plugin.getConfigManager().isMobHitsEnabled() ? plugin.getLangManager().getMessage("gui.lore.sounds_on") : plugin.getLangManager().getMessage("gui.lore.sounds_off")),
-                    "",
-                    plugin.getLangManager().getMessage("combat_info.server_settings")
-                )
-                .build()
-        );
-
         String progressBar = GUIUtils.getProgressBar(bestCombo, getNextLevelTarget(bestCombo), 20);
-        setItem(31, ItemBuilder.create(Material.EXPERIENCE_BOTTLE)
+        setItem(23, ItemBuilder.create(Material.EXPERIENCE_BOTTLE)
                 .setName(plugin.getLangManager().getGUIItem("progress"))
                 .setLore(
                     plugin.getLangManager().getGUILore("progress_desc"),

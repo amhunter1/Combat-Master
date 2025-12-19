@@ -6,7 +6,7 @@
 
     <groupId>com.melut</groupId>
     <artifactId>Combat-Master</artifactId>
-    <version>v1.0.0</version>
+    <version>v2.0.0</version>
     <packaging>jar</packaging>
 
     <properties>

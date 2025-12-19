@@ -23,7 +23,7 @@ public class MainMenu extends BaseGUI {
         int bestCombo = playerData != null ? playerData.getBestCombo() : 0;
         int totalHits = playerData != null ? playerData.getTotalHits() : 0;
 
-        setItem(10, ItemBuilder.create(Material.PLAYER_HEAD)
+        setItem(13, ItemBuilder.create(Material.PLAYER_HEAD)
                 .setName(plugin.getLangManager().getGUIItem("stats"))
                 .setLore(
                     plugin.getLangManager().getGUILore("stats_desc"),
@@ -40,7 +40,21 @@ public class MainMenu extends BaseGUI {
             p -> plugin.getMenuManager().openMenu(p, new StatsMenu(plugin, p))
         );
 
-        setItem(12, ItemBuilder.create(Material.GOLDEN_SWORD)
+        if (player.hasPermission("combatmaster.admin")) {
+            setItem(15, ItemBuilder.create(Material.COMMAND_BLOCK)
+                    .setName(plugin.getLangManager().getGUIItem("admin"))
+                    .setLore(
+                        plugin.getLangManager().getGUILore("admin_desc"),
+                        "",
+                        plugin.getLangManager().getMessage("general.click_for_admin")
+                    )
+                    .setGlowing(true)
+                    .build(),
+                p -> plugin.getMenuManager().openMenu(p, new AdminMenu(plugin, p))
+            );
+        }
+
+        setItem(17, ItemBuilder.create(Material.GOLDEN_SWORD)
                 .setName(plugin.getLangManager().getGUIItem("leaderboard"))
                 .setLore(
                     plugin.getLangManager().getGUILore("leaderboard_desc"),
@@ -53,21 +67,6 @@ public class MainMenu extends BaseGUI {
                 .build(),
             p -> plugin.getMenuManager().openMenu(p, new LeaderboardMenu(plugin, p))
         );
-
-
-        if (player.hasPermission("combatmaster.admin")) {
-            setItem(16, ItemBuilder.create(Material.COMMAND_BLOCK)
-                    .setName(plugin.getLangManager().getGUIItem("admin"))
-                    .setLore(
-                        plugin.getLangManager().getGUILore("admin_desc"),
-                        "",
-                        plugin.getLangManager().getMessage("general.click_for_admin")
-                    )
-                    .setGlowing(true)
-                    .build(),
-                p -> plugin.getMenuManager().openMenu(p, new AdminMenu(plugin, p))
-            );
-        }
 
         setItem(31, ItemBuilder.create(Material.BARRIER)
                 .setName(plugin.getLangManager().getGUIItem("close"))

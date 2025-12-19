@@ -19,7 +19,6 @@ com\melut\combatmaster\gui\BaseGUI$GUIAction.class
 com\melut\combatmaster\listeners\CombatListener.class
 com\melut\combatmaster\gui\MenuManager.class
 com\melut\combatmaster\managers\CombatManager$CombatData.class
-com\melut\combatmaster\gui\menus\SettingsMenu.class
 com\melut\combatmaster\database\DatabaseManager$LeaderboardEntry.class
 com\melut\combatmaster\database\DatabaseManager$PlayerData.class
 com\melut\combatmaster\database\DatabaseManager.class
